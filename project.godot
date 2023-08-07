@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="LowResJam"
+run/main_scene="res://scenes/world.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+
+[debug]
+
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_variable_base_class=0
+
+[display]
+
+window/size/viewport_width=64
+window/size/viewport_height=64
+window/size/initial_position_type=4
+window/size/window_width_override=512
+window/size/window_height_override=512
+window/stretch/mode="viewport"
+
+[rendering]
+
+renderer/rendering_method="mobile"

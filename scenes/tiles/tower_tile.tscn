@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b75nvqmo3tkr3"]
+
+[ext_resource type="Script" path="res://scripts/tiles/TowerTile.gd" id="1_r8j8h"]
+[ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="2_iyoyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bhmv"]
+size = Vector2(12, 12)
+
+[node name="TowerTile" type="Area2D"]
+script = ExtResource("1_r8j8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2bhmv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_iyoyq")
+region_rect = Rect2(9, 9, 12, 12)
