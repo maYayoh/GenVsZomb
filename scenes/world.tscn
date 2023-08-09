@@ -1,23 +1,28 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg0i000gb8ojj"]
+[gd_scene load_steps=17 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
 [ext_resource type="Script" path="res://scripts/tiles/UpgradeManager.gd" id="4_b2vs8"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="5_aql7x"]
-[ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
-[ext_resource type="Texture2D" uid="uid://dqdhxij5blevr" path="res://assets/textures/prix.png" id="5_o87no"]
-[ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
+[ext_resource type="Texture2D" uid="uid://duu8hocs0bd1r" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
+[ext_resource type="Texture2D" uid="uid://hs4u0mjjic2" path="res://assets/textures/prix.png" id="5_o87no"]
+[ext_resource type="Texture2D" uid="uid://bqpa3iyyb8g4g" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
 [ext_resource type="Script" path="res://scripts/BuildButton.gd" id="7_waa1p"]
-[ext_resource type="Texture2D" uid="uid://cam7prhtnsc7s" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
-[ext_resource type="Texture2D" uid="uid://clbqolbscj6yp" path="res://assets/textures/tiles/genA.png" id="10_05kyo"]
-[ext_resource type="Texture2D" uid="uid://d4d0jvgr4ad4y" path="res://assets/textures/tiles/genB.png" id="11_gyq7e"]
-[ext_resource type="Texture2D" uid="uid://c8jx0eohxyys5" path="res://assets/textures/tiles/genC.png" id="12_exo74"]
+[ext_resource type="Texture2D" uid="uid://dc5nrndfhsnnf" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
+[ext_resource type="Texture2D" uid="uid://dt85c23mc2g2e" path="res://assets/textures/tiles/genA.png" id="10_05kyo"]
+[ext_resource type="Texture2D" uid="uid://dkyeisbdd7qcd" path="res://assets/textures/tiles/genB.png" id="11_gyq7e"]
+[ext_resource type="Script" path="res://scripts/zombies/ZombieManager.gd" id="11_n5efm"]
+[ext_resource type="Texture2D" uid="uid://ckjvan5yvhobf" path="res://assets/textures/tiles/genC.png" id="12_exo74"]
+[ext_resource type="Script" path="res://scripts/EndZone.gd" id="16_43hgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eykte"]
+size = Vector2(1, 66)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_agt8q")
 
-[node name="TileManager" type="Node" parent="."]
+[node name="TileManager" type="Node2D" parent="."]
 script = ExtResource("2_ikol8")
 
 [node name="TileSlot1" parent="TileManager" instance=ExtResource("2_rhx0n")]
@@ -65,16 +70,18 @@ position = Vector2(32, 45)
 [node name="TileSlot15" parent="TileManager" instance=ExtResource("2_rhx0n")]
 position = Vector2(32, 58)
 
-[node name="UpgradeManager" type="Node" parent="."]
+[node name="UpgradeManager" type="Node2D" parent="."]
 script = ExtResource("4_b2vs8")
 
 [node name="GeneratorUpgradeMenu" type="Control" parent="UpgradeManager"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -12.0
 offset_top = 10.0
 offset_bottom = 64.0
 script = ExtResource("5_aql7x")
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonA" type="TextureButton" parent="UpgradeManager/GeneratorUpgradeMenu"]
 layout_mode = 2
@@ -128,13 +135,16 @@ offset_right = 12.0
 offset_bottom = 54.0
 texture = ExtResource("5_o87no")
 
-[node name="ZombieManager" type="Node" parent="."]
+[node name="ZombieManager" type="Node2D" parent="."]
+script = ExtResource("11_n5efm")
 
 [node name="RessourcesMenu" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 12.0
 offset_bottom = 74.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Money" type="TextureRect" parent="RessourcesMenu"]
 layout_mode = 2
@@ -150,12 +160,14 @@ offset_bottom = 6.0
 texture = ExtResource("5_o87no")
 
 [node name="BuildMenu" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -12.0
 offset_top = 10.0
 offset_bottom = 64.0
 script = ExtResource("5_aql7x")
+metadata/_edit_use_anchors_ = true
 
 [node name="GeneratorButton" type="TextureButton" parent="BuildMenu"]
 layout_mode = 2
@@ -208,3 +220,14 @@ offset_top = 48.0
 offset_right = 12.0
 offset_bottom = 54.0
 texture = ExtResource("5_o87no")
+
+[node name="EndZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("16_43hgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone"]
+position = Vector2(65.5, 32)
+shape = SubResource("RectangleShape2D_eykte")
+
+[connection signal="area_entered" from="EndZone" to="EndZone" method="_on_area_entered"]

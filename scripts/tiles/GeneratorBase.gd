@@ -1,4 +1,5 @@
-extends "res://scripts/tiles/BaseTile.gd"
+extends BaseTile
+class_name GeneratorBase
 
 var energy_producing : int
 
@@ -9,7 +10,3 @@ func _init(health : int, money_cost: int, energy_producing : int):
 func on_day():
 	# TODO: add energy producing to player energy
 	super.on_day()
-
-func on_destroy():
-	# TODO: remove energy producing
-	super.on_destroy()

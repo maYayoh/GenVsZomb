@@ -1,4 +1,5 @@
-extends "res://scripts/tiles/BaseTile.gd"
+extends BaseTile
+class_name LaboratoryTile
 
 @export var energy_producing : int
 

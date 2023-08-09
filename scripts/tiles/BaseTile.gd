@@ -1,4 +1,5 @@
 extends Area2D
+class_name BaseTile
 
 var health : int
 var max_health : int
@@ -26,5 +27,8 @@ func on_night():
 func on_click(_viewport, event, _shape_idx):
 	push_error(self.name + "'s Click event missing")
 
-func on_destroy():
-	queue_free()
+func on_damage(power : int):
+	print(name + " " + str(health))
+	health -= power
+	if(health <= 0):
+		queue_free()

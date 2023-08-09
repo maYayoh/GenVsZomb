@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const BaseTile = preload("res://scripts/tiles/BaseTile.gd")
 const GeneratorTile = preload("res://scripts/tiles/GeneratorTile.gd")

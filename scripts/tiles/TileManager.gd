@@ -1,11 +1,9 @@
-extends Node
+extends Node2D
 
 const GeneratorTile = preload("res://scenes/tiles/generator_tile.tscn")
 const TowerTile = preload("res://scenes/tiles/tower_tile.tscn")
 const LaboratoryTile = preload("res://scenes/tiles/laboratory_tile.tscn")
 
-const TileSlot = preload("res://scripts/tiles/TileSlot.gd")
-const BuildButton = preload("res://scripts/BuildButton.gd")
 var selected_slot : TileSlot = null
 
 func on_day(): # a déclencher lors de fin de vague

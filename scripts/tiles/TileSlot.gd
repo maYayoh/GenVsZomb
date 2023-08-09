@@ -1,4 +1,5 @@
 extends Area2D
+class_name TileSlot
 
 var tile : Area2D = null
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://boqyrlk3w7kbv"]
+
+[ext_resource type="Script" path="res://scripts/zombies/BaseZombie.gd" id="1_ocaw7"]
+[ext_resource type="Texture2D" uid="uid://d0rppdwjm2xu7" path="res://assets/textures/zombies/smallZomb.png" id="2_3xj21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdjhd"]
+size = Vector2(1, 4)
+
+[node name="BaseZombie" type="Area2D"]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_ocaw7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.5, 0)
+texture = ExtResource("2_3xj21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_sdjhd")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,10 @@
 extends TextureButton
+class_name BuildButton
 
 enum TileType {
 	GENERATOR, TOWER, LABORATORY
 }
 
-const Menu = preload("res://scripts/Menu.gd")
 @export var type : TileType
 
 func _ready():

@@ -28,6 +28,13 @@ window/size/window_width_override=512
 window/size/window_height_override=512
 window/stretch/mode="viewport"
 
+[layer_names]
+
+2d_physics/layer_1="PlayerClicks"
+2d_physics/layer_3="ZombHitbox"
+2d_physics/layer_4="GenHitbox"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

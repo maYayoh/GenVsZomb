@@ -1,4 +1,5 @@
 extends Control
+class_name Menu
 
 enum SlideState {
 	HIDDEN, SLIDEIN, SHOWN, SLIDEOUT

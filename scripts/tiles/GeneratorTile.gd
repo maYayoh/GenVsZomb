@@ -1,4 +1,5 @@
-extends "res://scripts/tiles/GeneratorBase.gd"
+extends GeneratorBase
+class_name GeneratorTile
 
 func _init():
 	super(30, 2, 4)
