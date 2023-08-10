@@ -1,4 +1,7 @@
 extends Node2D
+class_name ZombieManager
+
+signal update_ressources(money, energy)
 
 const LittleZombie = preload("res://scenes/zombies/LittleZombie.tscn")
 const BigZombie = preload("res://scenes/zombies/BigZombie.tscn")

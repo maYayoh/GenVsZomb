@@ -1,4 +1,7 @@
 extends Node2D
+class_name TileManager
+
+signal update_ressource(money, energy)
 
 const GeneratorTile = preload("res://scenes/tiles/generator_tile.tscn")
 const TowerTile = preload("res://scenes/tiles/tower_tile.tscn")
@@ -22,7 +25,7 @@ func select_slot(slot : TileSlot):
 	get_owner().show_menu($"../BuildMenu")
 
 func add_tile(tile_type : BuildButton.TileType):
-	var node : Area2D = null
+	var node : BaseTile = null
 
 	match(tile_type):
 		BuildButton.TileType.GENERATOR:
@@ -31,6 +34,8 @@ func add_tile(tile_type : BuildButton.TileType):
 			node = TowerTile.instantiate()
 		BuildButton.TileType.LABORATORY:
 			node = LaboratoryTile.instantiate()
+	
+	update_ressource.emit(node.money_cost, node.energy_cost)
 	
 	selected_slot.add_building(node)
 	selected_slot.get_child(2).visible = false
