@@ -34,4 +34,4 @@ func on_damage(power : int):
 		queue_free()
 
 func on_destroy():
-	($"../.." as TileManager).update_ressource.emit(-money_cost if newly_placed else 0, -energy_cost)
+	($"../.." as TileManager).update_ressources.emit(-money_cost if newly_placed else 0, -energy_cost)

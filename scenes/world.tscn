@@ -251,6 +251,6 @@ libraries = {
 "": SubResource("AnimationLibrary_tb2w8")
 }
 
-[connection signal="update_ressource" from="TileManager" to="." method="_on_update_ressource"]
+[connection signal="update_ressources" from="TileManager" to="." method="_on_update_ressource"]
 [connection signal="update_ressources" from="ZombieManager" to="." method="_on_update_ressource"]
 [connection signal="area_entered" from="EndZone" to="EndZone" method="_on_area_entered"]
