@@ -1,23 +1,41 @@
-[gd_scene load_steps=17 format=3 uid="uid://dg0i000gb8ojj"]
+[gd_scene load_steps=16 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
-[ext_resource type="Script" path="res://scripts/tiles/UpgradeManager.gd" id="4_b2vs8"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="5_aql7x"]
-[ext_resource type="Texture2D" uid="uid://duu8hocs0bd1r" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
-[ext_resource type="Texture2D" uid="uid://hs4u0mjjic2" path="res://assets/textures/prix.png" id="5_o87no"]
-[ext_resource type="Texture2D" uid="uid://bqpa3iyyb8g4g" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
+[ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
+[ext_resource type="Texture2D" uid="uid://dqdhxij5blevr" path="res://assets/textures/prix.png" id="5_o87no"]
+[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="6_nlii3"]
+[ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
 [ext_resource type="Script" path="res://scripts/BuildButton.gd" id="7_waa1p"]
-[ext_resource type="Texture2D" uid="uid://dc5nrndfhsnnf" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
-[ext_resource type="Texture2D" uid="uid://dt85c23mc2g2e" path="res://assets/textures/tiles/genA.png" id="10_05kyo"]
-[ext_resource type="Texture2D" uid="uid://dkyeisbdd7qcd" path="res://assets/textures/tiles/genB.png" id="11_gyq7e"]
+[ext_resource type="Texture2D" uid="uid://cam7prhtnsc7s" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
 [ext_resource type="Script" path="res://scripts/zombies/ZombieManager.gd" id="11_n5efm"]
-[ext_resource type="Texture2D" uid="uid://ckjvan5yvhobf" path="res://assets/textures/tiles/genC.png" id="12_exo74"]
 [ext_resource type="Script" path="res://scripts/EndZone.gd" id="16_43hgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eykte"]
 size = Vector2(1, 66)
+
+[sub_resource type="Animation" id="Animation_1gunl"]
+resource_name = "fade"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb2w8"]
+_data = {
+"fade": SubResource("Animation_1gunl")
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_agt8q")
@@ -70,104 +88,78 @@ position = Vector2(32, 45)
 [node name="TileSlot15" parent="TileManager" instance=ExtResource("2_rhx0n")]
 position = Vector2(32, 58)
 
-[node name="UpgradeManager" type="Node2D" parent="."]
-script = ExtResource("4_b2vs8")
-
-[node name="GeneratorUpgradeMenu" type="Control" parent="UpgradeManager"]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = -12.0
-offset_top = 10.0
-offset_bottom = 64.0
-script = ExtResource("5_aql7x")
-metadata/_edit_use_anchors_ = true
-
-[node name="ButtonA" type="TextureButton" parent="UpgradeManager/GeneratorUpgradeMenu"]
-layout_mode = 2
-offset_right = 12.0
-offset_bottom = 12.0
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("10_05kyo")
-script = ExtResource("7_waa1p")
-
-[node name="PriceA" type="TextureRect" parent="UpgradeManager/GeneratorUpgradeMenu"]
-layout_mode = 2
-offset_top = 12.0
-offset_right = 12.0
-offset_bottom = 18.0
-texture = ExtResource("5_o87no")
-
-[node name="ButtonB" type="TextureButton" parent="UpgradeManager/GeneratorUpgradeMenu"]
-layout_mode = 2
-offset_top = 18.0
-offset_right = 12.0
-offset_bottom = 30.0
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("11_gyq7e")
-script = ExtResource("7_waa1p")
-type = 1
-
-[node name="PriceB" type="TextureRect" parent="UpgradeManager/GeneratorUpgradeMenu"]
-layout_mode = 2
-offset_top = 30.0
-offset_right = 12.0
-offset_bottom = 36.0
-texture = ExtResource("5_o87no")
-
-[node name="ButtonC" type="TextureButton" parent="UpgradeManager/GeneratorUpgradeMenu"]
-layout_mode = 2
-offset_top = 36.0
-offset_right = 12.0
-offset_bottom = 48.0
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("12_exo74")
-script = ExtResource("7_waa1p")
-type = 2
-
-[node name="PriceC" type="TextureRect" parent="UpgradeManager/GeneratorUpgradeMenu"]
-layout_mode = 2
-offset_top = 48.0
-offset_right = 12.0
-offset_bottom = 54.0
-texture = ExtResource("5_o87no")
-
 [node name="ZombieManager" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("11_n5efm")
 
-[node name="RessourcesMenu" type="Control" parent="."]
+[node name="RessourcesMenu" type="ColorRect" parent="."]
 texture_filter = 1
-layout_mode = 3
-anchors_preset = 0
-offset_right = 12.0
-offset_bottom = 74.0
+offset_right = 25.0
+offset_bottom = 5.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Money" type="TextureRect" parent="RessourcesMenu"]
-layout_mode = 2
-offset_right = 12.0
-offset_bottom = 6.0
-texture = ExtResource("5_o87no")
+[node name="MoneyHolder" type="Control" parent="RessourcesMenu"]
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 13.0
+offset_bottom = 5.0
 
-[node name="Energy" type="TextureRect" parent="RessourcesMenu"]
-layout_mode = 2
-offset_left = 13.0
-offset_right = 25.0
-offset_bottom = 6.0
-texture = ExtResource("5_o87no")
+[node name="DizainM" type="Sprite2D" parent="RessourcesMenu/MoneyHolder"]
+position = Vector2(2, 2.5)
+scale = Vector2(0.995621, 0.985972)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 1
+
+[node name="UnitM" type="Sprite2D" parent="RessourcesMenu/MoneyHolder"]
+position = Vector2(6, 2.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+
+[node name="Coin" type="Sprite2D" parent="RessourcesMenu/MoneyHolder"]
+position = Vector2(10, 2.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 11
+
+[node name="EnergyHolder" type="Control" parent="RessourcesMenu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_right = 26.0
+offset_bottom = 5.0
+
+[node name="DizainE" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
+position = Vector2(2, 2.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+
+[node name="UnitE" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
+position = Vector2(6, 2.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+
+[node name="Energy" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
+position = Vector2(10, 2.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 12
 
 [node name="BuildMenu" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -12.0
-offset_top = 10.0
+offset_top = 7.0
 offset_bottom = 64.0
 script = ExtResource("5_aql7x")
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="BuildMenu"]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 57.0
+color = Color(0, 0, 0, 1)
 
 [node name="GeneratorButton" type="TextureButton" parent="BuildMenu"]
 layout_mode = 2
@@ -178,18 +170,34 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_b5igt")
 script = ExtResource("7_waa1p")
 
-[node name="GeneratorPrice" type="TextureRect" parent="BuildMenu"]
+[node name="GeneratorPrice" type="ColorRect" parent="BuildMenu"]
 layout_mode = 2
 offset_top = 12.0
 offset_right = 12.0
-offset_bottom = 18.0
-texture = ExtResource("5_o87no")
+offset_bottom = 19.0
+
+[node name="Dizain" type="Sprite2D" parent="BuildMenu/GeneratorPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="BuildMenu/GeneratorPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 2
+
+[node name="Coin" type="Sprite2D" parent="BuildMenu/GeneratorPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 11
 
 [node name="TowerButton" type="TextureButton" parent="BuildMenu"]
 layout_mode = 2
-offset_top = 18.0
+offset_top = 19.0
 offset_right = 12.0
-offset_bottom = 30.0
+offset_bottom = 31.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_i1tky")
@@ -198,16 +206,16 @@ type = 1
 
 [node name="TowerPrice" type="TextureRect" parent="BuildMenu"]
 layout_mode = 2
-offset_top = 30.0
+offset_top = 32.0
 offset_right = 12.0
-offset_bottom = 36.0
+offset_bottom = 38.0
 texture = ExtResource("5_o87no")
 
 [node name="LaboratoryButton" type="TextureButton" parent="BuildMenu"]
 layout_mode = 2
-offset_top = 36.0
+offset_top = 38.0
 offset_right = 12.0
-offset_bottom = 48.0
+offset_bottom = 50.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_ctgqp")
@@ -216,9 +224,9 @@ type = 2
 
 [node name="LaboratoryPrice" type="TextureRect" parent="BuildMenu"]
 layout_mode = 2
-offset_top = 48.0
+offset_top = 51.0
 offset_right = 12.0
-offset_bottom = 54.0
+offset_bottom = 57.0
 texture = ExtResource("5_o87no")
 
 [node name="EndZone" type="Area2D" parent="."]
@@ -229,6 +237,19 @@ script = ExtResource("16_43hgl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone"]
 position = Vector2(65.5, 32)
 shape = SubResource("RectangleShape2D_eykte")
+
+[node name="SelectedTile" type="ColorRect" parent="."]
+visible = false
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 7.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedTile"]
+autoplay = "fade"
+libraries = {
+"": SubResource("AnimationLibrary_tb2w8")
+}
 
 [connection signal="update_ressource" from="TileManager" to="." method="_on_update_ressource"]
 [connection signal="update_ressources" from="ZombieManager" to="." method="_on_update_ressource"]

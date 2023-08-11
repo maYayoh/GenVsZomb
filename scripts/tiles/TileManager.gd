@@ -18,9 +18,6 @@ func on_night(): # signal a recevoir d'un bouton
 		slot.on_night()
 
 func select_slot(slot : TileSlot):
-	if selected_slot != null:
-		selected_slot.get_child(2).visible = false
-	slot.get_child(2).visible = true
 	self.selected_slot = slot
 	get_owner().show_menu($"../BuildMenu")
 
@@ -38,4 +35,3 @@ func add_tile(tile_type : BuildButton.TileType):
 	update_ressource.emit(node.money_cost, node.energy_cost)
 	
 	selected_slot.add_building(node)
-	selected_slot.get_child(2).visible = false

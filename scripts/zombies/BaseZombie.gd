@@ -20,6 +20,9 @@ func takeDamage(damageAmount : int = 1):
 func _on_timer_timeout():
 	if(primed):
 		attack.emit(power)
+		position.y -= 1
+		await get_tree().process_frame
+		position.y += 1
 	else:
 		position.x += 1
 

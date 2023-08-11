@@ -1,17 +1,11 @@
 extends Area2D
 class_name BaseTile
 
-var health : int
-var max_health : int
-var money_cost : int
-var energy_cost : int
+@export var health : int = 0
+@export var money_cost : int = 0
+@export var energy_cost : int = 0
+@export var menu : PackedScene = null
 var newly_placed : bool = true
-
-func _init(hp : int, cost : int, energy : int):
-	self.health = hp
-	self.max_health = hp
-	self.money_cost = cost
-	self.energy_cost = energy
 
 func _ready():
 	# Transparent by default
@@ -28,7 +22,11 @@ func on_night():
 	modulate.a = 1
 
 func on_click(_viewport, event, _shape_idx):
-	push_error(self.name + "'s Click event missing")
+	if (event is InputEventMouseButton && event.pressed):
+		if (menu != null):
+			pass
+		else:
+			push_error(self.name + "'s Menu Scene is missing")
 
 func on_damage(power : int):
 	health -= power
@@ -36,4 +34,4 @@ func on_damage(power : int):
 		queue_free()
 
 func on_destroy():
-	($"../.." as TileManager).update_ressource.emit(0, -energy_cost)
+	($"../.." as TileManager).update_ressource.emit(-money_cost if newly_placed else 0, -energy_cost)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://elmxaqlgiu0q"]
 
-[ext_resource type="Script" path="res://scripts/tiles/GeneratorTile.gd" id="1_oistm"]
-[ext_resource type="Texture2D" uid="uid://duu8hocs0bd1r" path="res://assets/textures/tiles/gen.png" id="2_5jw56"]
+[ext_resource type="Script" path="res://scripts/tiles/BaseTile.gd" id="1_ehtm2"]
+[ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="2_5jw56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bhmv"]
 size = Vector2(12, 12)
@@ -10,7 +10,10 @@ size = Vector2(12, 12)
 collision_layer = 9
 collision_mask = 4
 monitoring = false
-script = ExtResource("1_oistm")
+script = ExtResource("1_ehtm2")
+health = 10
+money_cost = 2
+energy_cost = -2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2bhmv")

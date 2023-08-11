@@ -1,33 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu7gsk0kbrt5l"]
+[gd_scene load_steps=4 format=3 uid="uid://cu7gsk0kbrt5l"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TileSlot.gd" id="1_snb7b"]
-[ext_resource type="Texture2D" uid="uid://b7jkwqjnly6aw" path="res://assets/textures/tiles/tile.png" id="2_yd4k4"]
-[ext_resource type="Texture2D" uid="uid://bc4xcpdwdiuau" path="res://assets/textures/tiles/selected.png" id="3_xrwyh"]
+[ext_resource type="Texture2D" uid="uid://kl2pf2sjwwrb" path="res://assets/textures/tiles/tile.png" id="2_yd4k4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_apou2"]
-atlas = ExtResource("3_xrwyh")
-region = Rect2(0, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcjk2"]
-atlas = ExtResource("3_xrwyh")
-region = Rect2(14, 0, 14, 14)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5x6vc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_apou2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bcjk2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}]
 
 [node name="TileSlot" type="Area2D"]
 collision_mask = 0
@@ -40,13 +17,5 @@ shape = SubResource("RectangleShape2D_klfxf")
 texture_filter = 1
 texture = ExtResource("2_yd4k4")
 region_rect = Rect2(9, 9, 12, 12)
-
-[node name="Selected" type="AnimatedSprite2D" parent="."]
-z_index = 1
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_5x6vc")
-autoplay = "default"
-frame_progress = 0.144246
-flip_v = true
 
 [connection signal="input_event" from="." to="." method="on_click"]
