@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://x75uqrkn0emh"]
+
+[ext_resource type="Script" path="res://scripts/tiles/BaseTile.gd" id="1_wyfsa"]
+[ext_resource type="Texture2D" uid="uid://mhja86y6vm8x" path="res://assets/textures/tiles/genA.png" id="2_lgyxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
+size = Vector2(12, 12)
+
+[node name="GenATile" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_wyfsa")
+type = 1
+health = 7
+money_cost = 7
+energy_cost = -5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_klfxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_lgyxd")
+region_rect = Rect2(9, 9, 12, 12)

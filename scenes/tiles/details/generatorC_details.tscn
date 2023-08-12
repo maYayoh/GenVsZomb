@@ -1,16 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsht1a0kteurc"]
+[gd_scene load_steps=5 format=3 uid="uid://ia024j0b7rik"]
 
-[ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="1_30hgh"]
-[ext_resource type="Script" path="res://scripts/menus/TileDetails.gd" id="1_32w7d"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="2_aa6dv"]
-[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="3_eyy4n"]
+[ext_resource type="Script" path="res://scripts/menus/TileDetails.gd" id="1_ysase"]
+[ext_resource type="Texture2D" uid="uid://c8jx0eohxyys5" path="res://assets/textures/tiles/genC.png" id="2_wj0b5"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="3_bunhr"]
+[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="4_kkybk"]
 
-[node name="GeneratorDetails" type="TextureButton"]
+[node name="GeneratorCDetails" type="TextureButton"]
 offset_top = 64.0
 offset_right = 64.0
 offset_bottom = 128.0
 ignore_texture_size = true
-script = ExtResource("1_32w7d")
+script = ExtResource("1_ysase")
 
 [node name="back" type="ColorRect" parent="."]
 layout_mode = 0
@@ -29,74 +29,74 @@ mouse_filter = 2
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(32, 25)
 scale = Vector2(4.16667, 4.16667)
-texture = ExtResource("1_30hgh")
+texture = ExtResource("2_wj0b5")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(58, 58)
-texture = ExtResource("1_30hgh")
+texture = ExtResource("2_wj0b5")
 
 [node name="Heart" type="Sprite2D" parent="."]
 position = Vector2(21, 57)
-texture = ExtResource("2_aa6dv")
+texture = ExtResource("3_bunhr")
 hframes = 5
 vframes = 2
 frame = 5
 
 [node name="DizainH" type="Sprite2D" parent="Heart"]
 position = Vector2(8, 3.5)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
-frame = 1
 
 [node name="UnitH" type="Sprite2D" parent="Heart"]
 position = Vector2(12, 3.5)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
+frame = 7
 
 [node name="Stat" type="Sprite2D" parent="."]
 position = Vector2(42, 57)
-texture = ExtResource("2_aa6dv")
+texture = ExtResource("3_bunhr")
 hframes = 5
 vframes = 2
 frame = 8
 
 [node name="UnitS" type="Sprite2D" parent="Stat"]
 position = Vector2(8, 3.5)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
-frame = 3
+frame = 5
 
 [node name="Money" type="Sprite2D" parent="."]
 position = Vector2(3, 53.5)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
 frame = 11
 
 [node name="DizainM" type="Sprite2D" parent="Money"]
 position = Vector2(5, 0)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
 
 [node name="UnitM" type="Sprite2D" parent="Money"]
 position = Vector2(9, 0)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
-frame = 2
+frame = 7
 
 [node name="Elec" type="Sprite2D" parent="."]
 position = Vector2(4, 60.5)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
 frame = 12
 
 [node name="DizainE" type="Sprite2D" parent="Elec"]
 position = Vector2(4, 0)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
 
 [node name="UnitE" type="Sprite2D" parent="Elec"]
 position = Vector2(8, 0)
-texture = ExtResource("3_eyy4n")
+texture = ExtResource("4_kkybk")
 hframes = 13
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

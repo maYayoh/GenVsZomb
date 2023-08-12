@@ -1,16 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg0i000gb8ojj"]
+[gd_scene load_steps=21 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
+[ext_resource type="Script" path="res://scripts/menus/NightButton.gd" id="2_ps36f"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
-[ext_resource type="Script" path="res://scripts/Menu.gd" id="5_aql7x"]
 [ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
-[ext_resource type="Texture2D" uid="uid://dqdhxij5blevr" path="res://assets/textures/prix.png" id="5_o87no"]
 [ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="6_nlii3"]
+[ext_resource type="Script" path="res://scripts/menus/Menu.gd" id="6_pfbch"]
 [ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
-[ext_resource type="Script" path="res://scripts/BuildButton.gd" id="7_waa1p"]
+[ext_resource type="Script" path="res://scripts/menus/RessourcesMenu.gd" id="7_mhpmy"]
+[ext_resource type="Script" path="res://scripts/menus/BuildButton.gd" id="8_0qbiw"]
 [ext_resource type="Texture2D" uid="uid://cam7prhtnsc7s" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
 [ext_resource type="Script" path="res://scripts/zombies/ZombieManager.gd" id="11_n5efm"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="12_l8c7u"]
 [ext_resource type="Script" path="res://scripts/EndZone.gd" id="16_43hgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eykte"]
@@ -37,8 +39,87 @@ _data = {
 "fade": SubResource("Animation_1gunl")
 }
 
+[sub_resource type="Animation" id="Animation_yaebr"]
+resource_name = "NewDay"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.372549, 0.176471, 0.509804, 1), Color(1, 0.745098, 0.568627, 1), Color(0.509804, 0.843137, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k37su"]
+resource_name = "NewNight"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.509804, 0.843137, 1, 1), Color(1, 0.745098, 0.568627, 1), Color(0.372549, 0.176471, 0.509804, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ne78l"]
+_data = {
+"NewDay": SubResource("Animation_yaebr"),
+"NewNight": SubResource("Animation_k37su")
+}
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_agt8q")
+
+[node name="ButtonsPanel" type="TextureButton" parent="."]
+offset_top = 5.0
+offset_right = 25.0
+offset_bottom = 64.0
+
+[node name="Buttons" type="ColorRect" parent="."]
+offset_top = 64.0
+offset_right = 25.0
+offset_bottom = 76.0
+color = Color(0.333333, 0.333333, 0.333333, 1)
+script = ExtResource("2_ps36f")
+
+[node name="NightButton" type="TextureButton" parent="Buttons"]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+ignore_texture_size = true
+
+[node name="NightIcon" type="Sprite2D" parent="Buttons/NightButton"]
+position = Vector2(6, 6)
+texture = ExtResource("12_l8c7u")
+hframes = 5
+vframes = 2
+
+[node name="LabButton" type="TextureButton" parent="Buttons"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 25.0
+offset_bottom = 12.0
+ignore_texture_size = true
+
+[node name="LabButton" type="Sprite2D" parent="Buttons/LabButton"]
+position = Vector2(6, 6)
+texture = ExtResource("12_l8c7u")
+hframes = 5
+vframes = 2
+frame = 9
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(32, 32)
 
 [node name="TileManager" type="Node2D" parent="."]
 script = ExtResource("2_ikol8")
@@ -92,55 +173,65 @@ position = Vector2(32, 58)
 y_sort_enabled = true
 script = ExtResource("11_n5efm")
 
-[node name="RessourcesMenu" type="ColorRect" parent="."]
+[node name="CheckEndWave" type="Timer" parent="ZombieManager"]
+wait_time = 2.0
+one_shot = true
+
+[node name="RessourcesMenu" type="Control" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
 offset_right = 25.0
-offset_bottom = 5.0
+offset_bottom = 6.0
+script = ExtResource("7_mhpmy")
 metadata/_edit_use_anchors_ = true
 
-[node name="MoneyHolder" type="Control" parent="RessourcesMenu"]
-anchors_preset = 0
-offset_left = 1.0
-offset_right = 13.0
-offset_bottom = 5.0
+[node name="MoneyHolder" type="ColorRect" parent="RessourcesMenu"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 7.0
 
 [node name="DizainM" type="Sprite2D" parent="RessourcesMenu/MoneyHolder"]
-position = Vector2(2, 2.5)
+unique_name_in_owner = true
+position = Vector2(2.99124, 3.5)
 scale = Vector2(0.995621, 0.985972)
 texture = ExtResource("6_nlii3")
 hframes = 13
 frame = 1
 
 [node name="UnitM" type="Sprite2D" parent="RessourcesMenu/MoneyHolder"]
-position = Vector2(6, 2.5)
+unique_name_in_owner = true
+position = Vector2(6.99124, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 
 [node name="Coin" type="Sprite2D" parent="RessourcesMenu/MoneyHolder"]
-position = Vector2(10, 2.5)
+position = Vector2(10.9912, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 frame = 11
 
-[node name="EnergyHolder" type="Control" parent="RessourcesMenu"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 14.0
-offset_right = 26.0
-offset_bottom = 5.0
+[node name="EnergyHolder" type="ColorRect" parent="RessourcesMenu"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 25.0
+offset_bottom = 7.0
 
 [node name="DizainE" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
-position = Vector2(2, 2.5)
+unique_name_in_owner = true
+position = Vector2(3, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 
 [node name="UnitE" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
-position = Vector2(6, 2.5)
+unique_name_in_owner = true
+position = Vector2(7, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 
 [node name="Energy" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
-position = Vector2(10, 2.5)
+position = Vector2(11, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 frame = 12
@@ -152,7 +243,7 @@ anchors_preset = 0
 offset_left = -12.0
 offset_top = 7.0
 offset_bottom = 64.0
-script = ExtResource("5_aql7x")
+script = ExtResource("6_pfbch")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="BuildMenu"]
@@ -168,7 +259,7 @@ offset_bottom = 12.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_b5igt")
-script = ExtResource("7_waa1p")
+script = ExtResource("8_0qbiw")
 
 [node name="GeneratorPrice" type="ColorRect" parent="BuildMenu"]
 layout_mode = 2
@@ -201,15 +292,31 @@ offset_bottom = 31.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_i1tky")
-script = ExtResource("7_waa1p")
+script = ExtResource("8_0qbiw")
 type = 1
 
-[node name="TowerPrice" type="TextureRect" parent="BuildMenu"]
-layout_mode = 2
-offset_top = 32.0
+[node name="TowerPrice" type="ColorRect" parent="BuildMenu"]
+layout_mode = 0
+offset_top = 31.0
 offset_right = 12.0
 offset_bottom = 38.0
-texture = ExtResource("5_o87no")
+
+[node name="Dizain" type="Sprite2D" parent="BuildMenu/TowerPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="BuildMenu/TowerPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 7
+
+[node name="Coin" type="Sprite2D" parent="BuildMenu/TowerPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 11
 
 [node name="LaboratoryButton" type="TextureButton" parent="BuildMenu"]
 layout_mode = 2
@@ -219,15 +326,31 @@ offset_bottom = 50.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_ctgqp")
-script = ExtResource("7_waa1p")
+script = ExtResource("8_0qbiw")
 type = 2
 
-[node name="LaboratoryPrice" type="TextureRect" parent="BuildMenu"]
-layout_mode = 2
-offset_top = 51.0
+[node name="LaboratoryButtton" type="ColorRect" parent="BuildMenu"]
+layout_mode = 0
+offset_top = 50.0
 offset_right = 12.0
 offset_bottom = 57.0
-texture = ExtResource("5_o87no")
+
+[node name="Dizain" type="Sprite2D" parent="BuildMenu/LaboratoryButtton"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="BuildMenu/LaboratoryButtton"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 2
+
+[node name="Coin" type="Sprite2D" parent="BuildMenu/LaboratoryButtton"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_nlii3")
+hframes = 13
+frame = 11
 
 [node name="EndZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -251,6 +374,15 @@ libraries = {
 "": SubResource("AnimationLibrary_tb2w8")
 }
 
+[node name="DayNightCycle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ne78l")
+}
+
+[connection signal="pressed" from="ButtonsPanel" to="." method="_on_night_panel_pressed"]
+[connection signal="pressed" from="Buttons/NightButton" to="." method="_on_night_button_pressed"]
+[connection signal="pressed" from="Buttons/LabButton" to="." method="_on_lab_button_pressed"]
 [connection signal="update_ressources" from="TileManager" to="." method="_on_update_ressource"]
 [connection signal="update_ressources" from="ZombieManager" to="." method="_on_update_ressource"]
+[connection signal="timeout" from="ZombieManager/CheckEndWave" to="ZombieManager" method="_on_check_end_wave_timeout"]
 [connection signal="area_entered" from="EndZone" to="EndZone" method="_on_area_entered"]

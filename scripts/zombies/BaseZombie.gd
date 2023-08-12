@@ -5,13 +5,13 @@ signal attack(power : int)
 
 @export var health : int = 10
 @export var power : int = 1
-@export var timeUntilNextMove : float = 1
+@export var time_between_moves : float = 1
 @export var money_gained : int = 1
 
 var primed : bool = false
 	
 func _ready():
-	$Timer.wait_time = timeUntilNextMove
+	$Timer.wait_time = time_between_moves
 	tree_exiting.connect(_on_tree_exiting)
 	
 func takeDamage(damageAmount : int = 1):
@@ -27,17 +27,16 @@ func _on_timer_timeout():
 		position.x += 1
 
 
-func _on_area_entered(area):
+func _on_tree_exiting():
+	(get_parent() as ZombieManager).update_ressources.emit(-money_gained, 0)
+
+
+func _on_hurt_box_area_entered(area):
 	if(area is BaseTile):
 		primed = true
 		attack.connect(area.on_damage)
 
-
-func _on_area_exited(area):
+func _on_hurt_box_area_exited(area):
 	if(area is BaseTile):
 		primed = false
 		attack.disconnect(area.on_damage)
-
-
-func _on_tree_exiting():
-	(get_parent() as ZombieManager).update_ressources.emit(-money_gained, 0)

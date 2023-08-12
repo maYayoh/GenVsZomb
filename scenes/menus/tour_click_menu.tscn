@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcbi6x3nnn3mv"]
+
+[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_v23wq"]
+[ext_resource type="PackedScene" uid="uid://bq01r83i6sib" path="res://scenes/tiles/details/tower_details.tscn" id="2_x03wr"]
+[ext_resource type="PackedScene" uid="uid://dgobury0i05tw" path="res://scenes/menus/tour_upgrade_menu.tscn" id="3_ysb75"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="4_kpjqk"]
+
+[node name="TourClickMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v23wq")
+details_scene = ExtResource("2_x03wr")
+upgrade_menu = ExtResource("3_ysb75")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 12.0
+offset_bottom = 64.0
+
+[node name="InfoButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 12.0
+offset_bottom = 37.0
+ignore_texture_size = true
+
+[node name="Info" type="Sprite2D" parent="InfoButton"]
+position = Vector2(6, 6)
+texture = ExtResource("4_kpjqk")
+hframes = 5
+vframes = 2
+frame = 1
+
+[node name="UpgradeButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 12.0
+offset_bottom = 50.0
+
+[node name="Upgrade" type="Sprite2D" parent="UpgradeButton"]
+position = Vector2(6, 6)
+texture = ExtResource("4_kpjqk")
+hframes = 5
+vframes = 2
+frame = 2
+
+[node name="DestroyButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 51.0
+offset_right = 12.0
+offset_bottom = 63.0
+
+[node name="Destroy" type="Sprite2D" parent="DestroyButton"]
+position = Vector2(6, 6)
+texture = ExtResource("4_kpjqk")
+hframes = 5
+vframes = 2
+frame = 3
+
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="DestroyButton" to="." method="_on_destroy_button_pressed"]

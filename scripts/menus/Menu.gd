@@ -6,26 +6,23 @@ enum SlideState {
 }
 
 var state : SlideState = SlideState.HIDDEN
-@onready var pos : float = position.x
 const SPEED : int = 60
 
 func _process(delta):
 	match(state):
 		SlideState.SLIDEIN:
 			if position.x < 0:
-				pos += delta * SPEED
+				position.x += delta * SPEED
 			else:
 				state = SlideState.SHOWN
-				pos = floor(pos)
+				position.x = floor(position.x)
 		SlideState.SLIDEOUT:
 			if position.x > -12:
-				pos -= delta * SPEED
+				position.x -= delta * SPEED
 			else:
 				state = SlideState.HIDDEN
-				pos = floor(pos)
-				get_owner().menu_hidden(self)
-	
-	position.x = pos
+				position.x = floor(position.x)
+				get_node("/root/World").menu_hidden(self)
 
 func slide_in():
 	state = SlideState.SLIDEIN

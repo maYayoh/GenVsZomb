@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4lhw32dwfnig"]
+
+[ext_resource type="Script" path="res://scripts/zombies/BaseZombie.gd" id="1_xc5f8"]
+[ext_resource type="Texture2D" uid="uid://bpsfayibyktmy" path="res://assets/textures/zombies/smolzomb.png" id="2_gd6xj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdluv"]
+size = Vector2(3, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdjhd"]
+size = Vector2(1, 1)
+
+[node name="LittleZombie" type="Area2D"]
+z_index = 1
+texture_filter = 1
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_xc5f8")
+health = 3
+time_between_moves = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_fdluv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.5, 0)
+texture = ExtResource("2_gd6xj")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_sdjhd")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

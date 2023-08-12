@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy7ogq3g02v0p"]
+
+[ext_resource type="Script" path="res://scripts/tiles/TowerTile.gd" id="1_xdjck"]
+[ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="2_i61l7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
+size = Vector2(12, 12)
+
+[node name="TourTile" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_xdjck")
+type = 4
+health = 15
+money_cost = 5
+energy_cost = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_klfxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_i61l7")
+region_rect = Rect2(9, 9, 12, 12)
+
+[node name="Timer" type="Timer" parent="Sprite2D"]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Sprite2D/Timer" to="." method="_on_timer_timeout"]
