@@ -179,6 +179,7 @@ one_shot = true
 
 [node name="RessourcesMenu" type="Control" parent="."]
 unique_name_in_owner = true
+z_index = 1
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
@@ -310,7 +311,7 @@ hframes = 13
 position = Vector2(6, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
-frame = 7
+frame = 5
 
 [node name="Coin" type="Sprite2D" parent="BuildMenu/TowerPrice"]
 position = Vector2(10, 3.5)

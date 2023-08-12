@@ -15,12 +15,14 @@ const Warning = preload("res://scenes/warning.tscn")
 
 
 func on_day():
+	is_night = false
 	check_building_energy()
 	$DayNightCycle.play("NewDay")
 	$TileManager.on_day()
 	$RessourcesMenu.on_day()
 
 func on_night():
+	is_night = true
 	day_number += 1
 	$DayNightCycle.play("NewNight")
 	$TileManager.on_night()
@@ -82,7 +84,7 @@ func toggle_cursor(show : bool):
 func check_building_energy():
 	if $Buttons/NightButton/NightIcon.get_child_count() == 1:
 		$Buttons/NightButton/NightIcon.get_child(0).queue_free()
-	print(self.energy)
+	
 	if self.energy < 0:
 		safe_to_go = false
 		
