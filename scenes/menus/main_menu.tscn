@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://crr5g4f7dda78"]
+
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_50yib"]
+[ext_resource type="Texture2D" uid="uid://2coabyl1t1j0" path="res://assets/textures/menu/title.png" id="1_ah42b"]
+[ext_resource type="Texture2D" uid="uid://c5o3bthrg06dq" path="res://assets/textures/menu/play.png" id="1_cwruj"]
+[ext_resource type="Texture2D" uid="uid://duu8hocs0bd1r" path="res://assets/textures/tiles/gen.png" id="1_y553g"]
+[ext_resource type="Texture2D" uid="uid://c0nbpdlq27aul" path="res://assets/textures/menu/play_ombre.png" id="2_lawd5"]
+[ext_resource type="Texture2D" uid="uid://biol2p7q3o37" path="res://assets/textures/menu/tuto_ombre.png" id="3_2f5qm"]
+[ext_resource type="Texture2D" uid="uid://cq84ti5xecs5n" path="res://assets/textures/menu/tuto.png" id="4_yxfqx"]
+[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="6_clv01"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5udl0"]
+frames = 2
+frame_0/texture = ExtResource("1_cwruj")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("2_lawd5")
+frame_1/duration = 0.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_yywwr"]
+frames = 2
+frame_0/texture = ExtResource("4_yxfqx")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("3_2f5qm")
+frame_1/duration = 0.5
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_50yib")
+
+[node name="Tiltle" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 13.0
+texture = ExtResource("1_ah42b")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 21.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_lawd5")
+texture_hover = SubResource("AnimatedTexture_5udl0")
+
+[node name="Tutorial" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 36.0
+offset_right = 61.0
+offset_bottom = 43.0
+texture_normal = ExtResource("3_2f5qm")
+texture_hover = SubResource("AnimatedTexture_yywwr")
+
+[node name="Credits" type="Sprite2D" parent="."]
+position = Vector2(57, 57)
+texture = ExtResource("6_clv01")
+hframes = 5
+vframes = 2
+frame = 1
+
+[node name="TextureButton" type="TextureButton" parent="Credits"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gen" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 51.0
+offset_right = 47.0
+offset_bottom = 64.0
+
+[node name="ColorRect" type="ColorRect" parent="Gen"]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 47.0
+offset_bottom = 12.0
+color = Color(0, 0, 0, 1)
+
+[node name="Gen" type="Sprite2D" parent="Gen"]
+position = Vector2(40, 5)
+texture = ExtResource("1_y553g")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
