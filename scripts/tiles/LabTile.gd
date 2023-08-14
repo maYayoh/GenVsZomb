@@ -13,11 +13,11 @@ func on_damage(zombie : BaseZombie):
 
 func contain_zombie(zombie : BaseZombie = null):
 	zombies_contained.append(zombie.type)
-	zombie.queue_free()
+	zombie.death.emit()
 	print(zombies_contained)
 
 func on_day():
-	if(zombies_contained.is_empty()):	
+	if(zombies_contained.is_empty()):
 		return
 	var world = get_node("/root/World") as World
 	

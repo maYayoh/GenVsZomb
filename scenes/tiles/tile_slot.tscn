@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu7gsk0kbrt5l"]
+[gd_scene load_steps=6 format=3 uid="uid://cu7gsk0kbrt5l"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TileSlot.gd" id="1_snb7b"]
-[ext_resource type="Texture2D" uid="uid://kl2pf2sjwwrb" path="res://assets/textures/tiles/tile.png" id="2_yd4k4"]
+[ext_resource type="Texture2D" uid="uid://b7jkwqjnly6aw" path="res://assets/textures/tiles/tile.png" id="2_yd4k4"]
+[ext_resource type="AudioStream" uid="uid://caml78pt73pvn" path="res://assets/sounds/tile_explosion.wav" id="3_wfmxv"]
+[ext_resource type="AudioStream" uid="uid://brlk2lh2l3oe" path="res://assets/sounds/validation.wav" id="4_it6sj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)
@@ -17,5 +19,11 @@ shape = SubResource("RectangleShape2D_klfxf")
 texture_filter = 1
 texture = ExtResource("2_yd4k4")
 region_rect = Rect2(9, 9, 12, 12)
+
+[node name="TileExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wfmxv")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_it6sj")
 
 [connection signal="input_event" from="." to="." method="on_click"]

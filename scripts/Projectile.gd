@@ -20,7 +20,7 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area is BaseZombie:
-		area.take_damage(power)
+		area.take_damage(hit_point)
 		hit_point -= 1
 		if hit_point <= 0:
 			queue_free()

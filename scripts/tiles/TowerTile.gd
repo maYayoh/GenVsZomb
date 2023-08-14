@@ -1,4 +1,5 @@
 extends BaseTile
+class_name TowerTile
 
 @export var munition : PackedScene = null
 @export var power : int = 0

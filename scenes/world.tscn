@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dg0i000gb8ojj"]
+[gd_scene load_steps=24 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
 [ext_resource type="Texture2D" uid="uid://cdyo2wn3pibk8" path="res://assets/textures/back.png" id="1_uiogn"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bqpa3iyyb8g4g" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
 [ext_resource type="Script" path="res://scripts/menus/RessourcesMenu.gd" id="7_mhpmy"]
 [ext_resource type="Script" path="res://scripts/menus/BuildButton.gd" id="8_0qbiw"]
+[ext_resource type="AudioStream" uid="uid://brlk2lh2l3oe" path="res://assets/sounds/validation.wav" id="8_br6w1"]
 [ext_resource type="Texture2D" uid="uid://dc5nrndfhsnnf" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
+[ext_resource type="AudioStream" uid="uid://bqbnx3s2wepjc" path="res://assets/sounds/cancel.wav" id="9_nh1os"]
 [ext_resource type="Script" path="res://scripts/zombies/ZombieManager.gd" id="11_n5efm"]
 [ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="12_l8c7u"]
 [ext_resource type="Script" path="res://scripts/EndZone.gd" id="16_43hgl"]
@@ -82,6 +84,12 @@ _data = {
 z_index = -1
 texture_repeat = 2
 script = ExtResource("1_agt8q")
+
+[node name="Validation" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_br6w1")
+
+[node name="Cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_nh1os")
 
 [node name="Back" type="Sprite2D" parent="."]
 texture_repeat = 2
