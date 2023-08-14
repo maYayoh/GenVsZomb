@@ -16,7 +16,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_xc5f8")
 health = 3
-time_between_moves = 0.5
+time_between_moves = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

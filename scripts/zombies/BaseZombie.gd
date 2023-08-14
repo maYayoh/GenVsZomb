@@ -14,8 +14,11 @@ func _ready():
 	$Timer.wait_time = time_between_moves
 	tree_exiting.connect(_on_tree_exiting)
 	
-func takeDamage(damageAmount : int = 1):
+func take_damage(damageAmount):
+	print(self.name + "\t" + str(health) + " hp")
 	health -= damageAmount
+	if health <= 0:
+		queue_free()
 
 func _on_timer_timeout():
 	if(primed):

@@ -11,7 +11,7 @@ func init(slot : TileSlot) -> LookMenu:
 	if (details_scene == null):
 		push_error(self.name + " don't have a details scene.")
 	if (upgrade_menu == null):
-		$UpgradeButton/Upgrade.frame = 4
+		$UpgradeButton/Upgrade.set_frame(4)
 		disabled_upgrade = true
 	
 	self.slot = slot

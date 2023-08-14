@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy7ogq3g02v0p"]
+[gd_scene load_steps=5 format=3 uid="uid://dy7ogq3g02v0p"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TowerTile.gd" id="1_xdjck"]
+[ext_resource type="PackedScene" uid="uid://d0ppxxaghfdbq" path="res://scenes/projectiles/bullet.tscn" id="2_grms8"]
 [ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="2_i61l7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
@@ -11,6 +12,8 @@ collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_xdjck")
+munition = ExtResource("2_grms8")
+power = 1
 type = 4
 health = 15
 money_cost = 5

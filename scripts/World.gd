@@ -3,7 +3,7 @@ class_name World
 
 var money : int = 10
 var energy : int = 0
-var day_number : int = 0
+var day_number : int = 1
 var is_night : bool = false
 var safe_to_go : bool = true
 var cursor_pos : Vector2 = Vector2.ZERO
@@ -15,6 +15,13 @@ const Warning = preload("res://scenes/warning.tscn")
 
 
 func on_day():
+	day_number += 1
+	if day_number == 3:
+		$LinesBlocker/Line2.queue_free()
+		$LinesBlocker/Line4.queue_free()
+	elif day_number == 4:
+		$LinesBlocker/Line1.queue_free()
+		$LinesBlocker/Line5.queue_free()
 	is_night = false
 	check_building_energy()
 	$DayNightCycle.play("NewDay")
@@ -23,10 +30,9 @@ func on_day():
 
 func on_night():
 	is_night = true
-	day_number += 1
 	$DayNightCycle.play("NewNight")
 	$TileManager.on_night()
-	$ZombieManager.on_night()
+	$ZombieManager.on_night(day_number-1)
 	$RessourcesMenu.on_night()
 
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://dg0i000gb8ojj"]
+[gd_scene load_steps=22 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
+[ext_resource type="Texture2D" uid="uid://c57h3vmagm63c" path="res://assets/textures/back.png" id="1_uiogn"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
 [ext_resource type="Script" path="res://scripts/menus/NightButton.gd" id="2_ps36f"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
@@ -78,48 +79,16 @@ _data = {
 }
 
 [node name="World" type="Node2D"]
+z_index = -1
+texture_repeat = 2
 script = ExtResource("1_agt8q")
 
-[node name="ButtonsPanel" type="TextureButton" parent="."]
-offset_top = 5.0
-offset_right = 25.0
-offset_bottom = 64.0
-
-[node name="Buttons" type="ColorRect" parent="."]
-offset_top = 64.0
-offset_right = 25.0
-offset_bottom = 76.0
-color = Color(0.333333, 0.333333, 0.333333, 1)
-script = ExtResource("2_ps36f")
-
-[node name="NightButton" type="TextureButton" parent="Buttons"]
-layout_mode = 0
-offset_right = 12.0
-offset_bottom = 12.0
-ignore_texture_size = true
-
-[node name="NightIcon" type="Sprite2D" parent="Buttons/NightButton"]
-position = Vector2(6, 6)
-texture = ExtResource("12_l8c7u")
-hframes = 5
-vframes = 2
-
-[node name="LabButton" type="TextureButton" parent="Buttons"]
-layout_mode = 0
-offset_left = 13.0
-offset_right = 25.0
-offset_bottom = 12.0
-ignore_texture_size = true
-
-[node name="LabButton" type="Sprite2D" parent="Buttons/LabButton"]
-position = Vector2(6, 6)
-texture = ExtResource("12_l8c7u")
-hframes = 5
-vframes = 2
-frame = 9
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(32, 32)
+[node name="Back" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(13, 32)
+texture = ExtResource("1_uiogn")
+region_enabled = true
+region_rect = Rect2(0, 0, 26, 64)
 
 [node name="TileManager" type="Node2D" parent="."]
 script = ExtResource("2_ikol8")
@@ -184,7 +153,7 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 25.0
-offset_bottom = 6.0
+offset_bottom = 7.0
 script = ExtResource("7_mhpmy")
 metadata/_edit_use_anchors_ = true
 
@@ -236,6 +205,81 @@ position = Vector2(11, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 frame = 12
+
+[node name="LinesBlocker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="Line1" type="ColorRect" parent="LinesBlocker"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 12.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line2" type="ColorRect" parent="LinesBlocker"]
+layout_mode = 0
+offset_top = 12.0
+offset_right = 64.0
+offset_bottom = 25.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line4" type="ColorRect" parent="LinesBlocker"]
+layout_mode = 0
+offset_top = 39.0
+offset_right = 64.0
+offset_bottom = 52.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line5" type="ColorRect" parent="LinesBlocker"]
+layout_mode = 0
+offset_top = 52.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonsPanel" type="TextureButton" parent="."]
+offset_top = 7.0
+offset_right = 25.0
+offset_bottom = 64.0
+
+[node name="Buttons" type="ColorRect" parent="."]
+offset_top = 64.0
+offset_right = 25.0
+offset_bottom = 76.0
+color = Color(0.333333, 0.333333, 0.333333, 1)
+script = ExtResource("2_ps36f")
+
+[node name="NightButton" type="TextureButton" parent="Buttons"]
+layout_mode = 0
+offset_right = 12.0
+offset_bottom = 12.0
+ignore_texture_size = true
+
+[node name="NightIcon" type="Sprite2D" parent="Buttons/NightButton"]
+position = Vector2(6, 6)
+texture = ExtResource("12_l8c7u")
+hframes = 5
+vframes = 2
+
+[node name="LabButton" type="TextureButton" parent="Buttons"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 25.0
+offset_bottom = 12.0
+ignore_texture_size = true
+
+[node name="LabButton" type="Sprite2D" parent="Buttons/LabButton"]
+position = Vector2(6, 6)
+texture = ExtResource("12_l8c7u")
+hframes = 5
+vframes = 2
+frame = 9
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(32, 32)
 
 [node name="BuildMenu" type="Control" parent="."]
 texture_filter = 1
@@ -311,7 +355,7 @@ hframes = 13
 position = Vector2(6, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
-frame = 5
+frame = 4
 
 [node name="Coin" type="Sprite2D" parent="BuildMenu/TowerPrice"]
 position = Vector2(10, 3.5)
@@ -380,9 +424,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ne78l")
 }
 
+[connection signal="update_ressources" from="TileManager" to="." method="_on_update_ressource"]
+[connection signal="update_ressources" from="ZombieManager" to="." method="_on_update_ressource"]
+[connection signal="timeout" from="ZombieManager/CheckEndWave" to="ZombieManager" method="_on_check_end_wave_timeout"]
 [connection signal="pressed" from="ButtonsPanel" to="." method="_on_night_panel_pressed"]
 [connection signal="pressed" from="Buttons/NightButton" to="." method="_on_night_button_pressed"]
 [connection signal="pressed" from="Buttons/LabButton" to="." method="_on_lab_button_pressed"]
-[connection signal="update_ressources" from="ZombieManager" to="." method="_on_update_ressource"]
-[connection signal="timeout" from="ZombieManager/CheckEndWave" to="ZombieManager" method="_on_check_end_wave_timeout"]
 [connection signal="area_entered" from="EndZone" to="EndZone" method="_on_area_entered"]
