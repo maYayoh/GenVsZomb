@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4f3vkr8tyevn"]
+[gd_scene load_steps=4 format=3 uid="uid://dlvgfuhgma5dj"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TowerTile.gd" id="1_5dgug"]
-[ext_resource type="Texture2D" uid="uid://8pb7he12gk56" path="res://assets/textures/tiles/tourA.png" id="2_o1y46"]
+[ext_resource type="Texture2D" uid="uid://lakne6bseimp" path="res://assets/textures/tiles/tourA.png" id="2_o1y46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)

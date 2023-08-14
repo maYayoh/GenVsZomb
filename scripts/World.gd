@@ -8,9 +8,12 @@ var is_night : bool = false
 var safe_to_go : bool = true
 var cursor_pos : Vector2 = Vector2.ZERO
 
+var zombie_analyzed_count : Array = [0,0,0] #small_zombie, tall_zombie, big_zombie
+
 var shown_menu : Menu = null
 var queued_menu : Menu = null
 
+const Lab_Menu = preload("res://scenes/menus/lab_menu.tscn")
 const Warning = preload("res://scenes/warning.tscn")
 
 
@@ -117,7 +120,9 @@ func _on_night_button_pressed():
 		$RessourcesMenu.shake($RessourcesMenu/EnergyHolder)
 
 func _on_lab_button_pressed():
-	$Buttons.slide_out()
+	#$Buttons.slide_out()
+	var lab_menu = Lab_Menu.instantiate().init(zombie_analyzed_count)
+	add_child(lab_menu)
 
 
 func _process(_delta):

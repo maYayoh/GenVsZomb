@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://drh8k75gjs25g"]
+[gd_scene load_steps=5 format=3 uid="uid://p2q1xq0cy8wt"]
 
 [ext_resource type="Script" path="res://scripts/menus/TileDetails.gd" id="1_fu2se"]
-[ext_resource type="Texture2D" uid="uid://mhja86y6vm8x" path="res://assets/textures/tiles/genA.png" id="2_7wurs"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="3_irggf"]
-[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="4_t0ntq"]
+[ext_resource type="Texture2D" uid="uid://dt85c23mc2g2e" path="res://assets/textures/tiles/genA.png" id="2_7wurs"]
+[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="3_irggf"]
+[ext_resource type="Texture2D" uid="uid://dibi88ghnhq76" path="res://assets/textures/number.png" id="4_t0ntq"]
 
 [node name="GeneratorADetails" type="TextureButton"]
 offset_top = 64.0

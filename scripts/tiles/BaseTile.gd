@@ -19,8 +19,8 @@ func on_night():
 	newly_placed = false
 	modulate.a = 1
 
-func on_damage(power : int):
-	health -= power
+func on_damage(zombie : BaseZombie):
+	health -= zombie.power
 	if(health <= 0):
 		queue_free()
 

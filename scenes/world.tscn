@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
-[ext_resource type="Texture2D" uid="uid://c57h3vmagm63c" path="res://assets/textures/back.png" id="1_uiogn"]
+[ext_resource type="Texture2D" uid="uid://cdyo2wn3pibk8" path="res://assets/textures/back.png" id="1_uiogn"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
 [ext_resource type="Script" path="res://scripts/menus/NightButton.gd" id="2_ps36f"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
