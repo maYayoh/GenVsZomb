@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://v8hy2raumugb"]
 
 [ext_resource type="Script" path="res://scripts/zombies/BaseZombie.gd" id="1_baa6l"]
-[ext_resource type="Texture2D" uid="uid://dsr2k071dqwm8" path="res://assets/textures/zombies/bigzomb.png" id="2_d8ley"]
-[ext_resource type="AudioStream" uid="uid://uxxwmkjqnk1e" path="res://assets/sounds/big_zombie_punch.wav" id="2_pismj"]
+[ext_resource type="Texture2D" uid="uid://cjl1qg574ha3v" path="res://assets/textures/zombies/bigzomb.png" id="2_d8ley"]
+[ext_resource type="AudioStream" uid="uid://c3ik0v24ejkve" path="res://assets/sounds/big_zombie_punch.wav" id="2_pismj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdluv"]
 size = Vector2(5, 5)
@@ -16,6 +16,11 @@ texture_filter = 1
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_baa6l")
+type = 2
+health = 25
+power = 3
+time_between_moves = 1.9
+money_gained = 5
 attack_sound = ExtResource("2_pismj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

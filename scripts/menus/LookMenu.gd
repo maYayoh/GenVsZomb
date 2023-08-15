@@ -13,7 +13,7 @@ const Type = TileManager.TileType
 
 func init(slot : TileSlot) -> LookMenu:
 	self.slot = slot
-	self.tile = slot.get_child(2)
+	self.tile = slot.get_child(4)
 	if (details_scene == null):
 		match(self.tile.type):
 			Type.GEN_A:

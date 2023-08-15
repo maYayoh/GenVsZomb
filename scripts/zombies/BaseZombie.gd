@@ -1,6 +1,9 @@
 extends Area2D
 class_name BaseZombie
 
+enum ZombieType {SMALL_ZOMBIE, TALL_ZOMBIE, BIG_ZOMBIE}
+
+
 signal attack(Zombie : BaseZombie)
 signal death()
 
@@ -18,7 +21,6 @@ const death_sound : AudioStream = preload("res://assets/sounds/zombie_death.wav"
 
 var primed : bool = false
 
-enum ZombieType {SMALL_ZOMBIE, TALL_ZOMBIE, BIG_ZOMBIE}
 
 func _ready():
 	$Timer.wait_time = time_between_moves

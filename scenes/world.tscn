@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
 [ext_resource type="Script" path="res://scripts/menus/RessourcesMenu.gd" id="7_mhpmy"]
 [ext_resource type="Script" path="res://scripts/menus/BuildButton.gd" id="8_0qbiw"]
+[ext_resource type="AudioStream" uid="uid://ddlmd3m32h6pk" path="res://assets/sounds/validation.wav" id="8_br6w1"]
 [ext_resource type="Texture2D" uid="uid://cam7prhtnsc7s" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
-[ext_resource type="AudioStream" uid="uid://brlk2lh2l3oe" path="res://assets/sounds/validation.wav" id="8_br6w1"]
-[ext_resource type="AudioStream" uid="uid://bqbnx3s2wepjc" path="res://assets/sounds/cancel.wav" id="9_nh1os"]
+[ext_resource type="AudioStream" uid="uid://fup7g3ckw57f" path="res://assets/sounds/cancel.wav" id="9_nh1os"]
 [ext_resource type="Script" path="res://scripts/zombies/ZombieManager.gd" id="11_n5efm"]
 [ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="12_l8c7u"]
 [ext_resource type="Script" path="res://scripts/EndZone.gd" id="16_43hgl"]
@@ -207,7 +207,6 @@ unique_name_in_owner = true
 position = Vector2(7, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
-frame = 3
 
 [node name="Energy" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
 position = Vector2(11, 3.5)

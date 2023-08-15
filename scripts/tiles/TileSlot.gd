@@ -30,8 +30,8 @@ func change_building(node : BaseTile):
 func energy_check(Warning : PackedScene, safe : bool):
 	if tile == null: return
 	
-	if tile.get_child_count() == 5:
-		tile.get_child(4).queue_free()
+	if tile.get_child_count() == 4:
+		tile.get_child(3).queue_free()
 		
 	if tile.energy_cost > 0:
 		if not safe:

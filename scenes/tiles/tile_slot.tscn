@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cu7gsk0kbrt5l"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TileSlot.gd" id="1_snb7b"]
-[ext_resource type="Texture2D" uid="uid://b7jkwqjnly6aw" path="res://assets/textures/tiles/tile.png" id="2_yd4k4"]
-[ext_resource type="AudioStream" uid="uid://caml78pt73pvn" path="res://assets/sounds/tile_explosion.wav" id="3_wfmxv"]
-[ext_resource type="AudioStream" uid="uid://brlk2lh2l3oe" path="res://assets/sounds/validation.wav" id="4_it6sj"]
+[ext_resource type="Texture2D" uid="uid://kl2pf2sjwwrb" path="res://assets/textures/tiles/tile.png" id="2_yd4k4"]
+[ext_resource type="AudioStream" uid="uid://j8is8h25c7px" path="res://assets/sounds/tile_explosion.wav" id="3_wfmxv"]
+[ext_resource type="AudioStream" uid="uid://ddlmd3m32h6pk" path="res://assets/sounds/validation.wav" id="4_it6sj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)

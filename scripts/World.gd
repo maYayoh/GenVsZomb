@@ -2,7 +2,7 @@ extends Node2D
 class_name World
 
 var money : int = 10
-var energy : int = 3
+var energy : int = 0
 var day_number : int = 1
 var is_night : bool = false
 var safe_to_go : bool = true
@@ -111,7 +111,7 @@ func _on_night_panel_pressed():
 			$Validation.play()
 			show_menu($Buttons, false)
 		else:
-			$Cancel.play()
+			$Validation.play()
 			$Buttons.slide_out()
 
 func _on_night_button_pressed():

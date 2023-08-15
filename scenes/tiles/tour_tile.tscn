@@ -14,7 +14,6 @@ monitoring = false
 script = ExtResource("1_xdjck")
 munition = ExtResource("2_hbisx")
 power = 1
-time_between_attacks = 1.5
 type = 4
 health = 15
 money_cost = 4
