@@ -9,14 +9,10 @@ enum TileType {
 	LAB, LAB_A, LAB_B, LAB_C
 }
 
-const GenMenu = preload("res://scenes/menus/gen_click_menu.tscn")
-const GenAMenu = preload("res://scenes/menus/genA_click_menu.tscn")
-const GenBMenu = preload("res://scenes/menus/genB_click_menu.tscn")
-const GenCMenu = preload("res://scenes/menus/genC_click_menu.tscn")
-const TourMenu = preload("res://scenes/menus/tour_click_menu.tscn")
-const TourAMenu = preload("res://scenes/menus/tourA_click_menu.tscn")
-const TourBMenu = preload("res://scenes/menus/tourB_click_menu.tscn")
-const TourCMenu = preload("res://scenes/menus/tourC_click_menu.tscn")
+const GenMenu = preload("res://scenes/menus/clicks/gen_click_menu.tscn")
+const TourMenu = preload("res://scenes/menus/clicks/tour_click_menu.tscn")
+const LabMenu = preload("res://scenes/menus/clicks/lab_click_menu.tscn")
+const DefaultMenu = preload("res://scenes/menus/clicks/default_click_menu.tscn")
 
 var selected_slot : TileSlot = null
 @onready var world : World = get_owner()
@@ -41,28 +37,18 @@ func look_menu(slot: TileSlot, type : TileType):
 	match(type):
 		TileType.GEN:
 			menu = GenMenu.instantiate().init(selected_slot)
-		TileType.GEN_A:
-			menu = GenAMenu.instantiate().init(selected_slot)
-		TileType.GEN_B:
-			menu = GenBMenu.instantiate().init(selected_slot)
-		TileType.GEN_C:
-			menu = GenCMenu.instantiate().init(selected_slot)
-		
 		TileType.TOUR:
 			menu = TourMenu.instantiate().init(selected_slot)
-		TileType.TOUR_A:
-			menu = TourAMenu.instantiate().init(selected_slot)
-		TileType.TOUR_B:
-			menu = TourBMenu.instantiate().init(selected_slot)
-		TileType.TOUR_C:
-			menu = TourCMenu.instantiate().init(selected_slot)
+		TileType.LAB:
+			menu = LabMenu.instantiate().init(selected_slot)
+		_:
+			menu = DefaultMenu.instantiate().init(selected_slot)
 	world.add_child(menu)
 	world.show_menu(menu)
 
 
 func add_tile(node : BaseTile):
 	selected_slot.add_building(node)
-	update_ressources.emit(node.money_cost, node.energy_cost)
 
 
 func energy_check(Warning : PackedScene, safe : bool):

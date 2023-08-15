@@ -1,4 +1,5 @@
 extends BaseTile
+class_name TowerTile
 
 @export var munition : PackedScene = null
 @export var power : int = 0
@@ -7,15 +8,15 @@ extends BaseTile
 
 func _ready():
 	super._ready()
-	%Timer.wait_time = time_between_attacks
+	$Timer.wait_time = time_between_attacks
 
 func on_day():
 	super.on_day()
-	%Timer.stop()
+	$Timer.stop()
 
 func on_night():
 	super.on_night()
-	%Timer.start()
+	$Timer.start()
 	
 
 func _on_timer_timeout():

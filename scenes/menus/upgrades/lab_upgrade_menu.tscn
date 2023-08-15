@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn8y7jfg3vjvs"]
+
+[ext_resource type="Script" path="res://scripts/menus/UpgradeMenu.gd" id="1_fx12u"]
+[ext_resource type="PackedScene" uid="uid://bfw2pmumpvs8b" path="res://scenes/tiles/labA_tile.tscn" id="2_tn2df"]
+[ext_resource type="PackedScene" uid="uid://ca61a3qhj7n81" path="res://scenes/tiles/labB_tile.tscn" id="3_61ach"]
+[ext_resource type="PackedScene" uid="uid://bhxip4rxxmw1" path="res://scenes/tiles/labC_tile.tscn" id="4_thp53"]
+[ext_resource type="Texture2D" uid="uid://c14vdqolguh5x" path="res://assets/textures/tiles/labA.png" id="5_fcv6w"]
+[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="6_73csl"]
+[ext_resource type="Texture2D" uid="uid://bmaivfw06tvj0" path="res://assets/textures/tiles/labB.png" id="7_abyx0"]
+[ext_resource type="Texture2D" uid="uid://c1vh21h2sk7h1" path="res://assets/textures/tiles/labC.png" id="8_7g0ye"]
+
+[node name="LabUpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fx12u")
+upgradeA = ExtResource("2_tn2df")
+upgradeB = ExtResource("3_61ach")
+upgradeC = ExtResource("4_thp53")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 12.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="UpgradeAButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_top = 7.0
+offset_right = 12.0
+offset_bottom = 19.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_fcv6w")
+
+[node name="UAPrice" type="ColorRect" parent="."]
+layout_mode = 2
+offset_top = 19.0
+offset_right = 12.0
+offset_bottom = 26.0
+
+[node name="Dizain" type="Sprite2D" parent="UAPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="UAPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 8
+
+[node name="Coin" type="Sprite2D" parent="UAPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 11
+
+[node name="UpgradeBButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_top = 26.0
+offset_right = 12.0
+offset_bottom = 38.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_abyx0")
+
+[node name="UBPrice" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 12.0
+offset_bottom = 45.0
+
+[node name="Dizain" type="Sprite2D" parent="UBPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="UBPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 8
+
+[node name="Coin" type="Sprite2D" parent="UBPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 11
+
+[node name="UpgradeCButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_top = 45.0
+offset_right = 12.0
+offset_bottom = 57.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_7g0ye")
+
+[node name="UCPrice" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 57.0
+offset_right = 12.0
+offset_bottom = 64.0
+
+[node name="Dizain" type="Sprite2D" parent="UCPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 1
+
+[node name="Unit" type="Sprite2D" parent="UCPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 2
+
+[node name="Coin" type="Sprite2D" parent="UCPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_73csl")
+hframes = 13
+frame = 11
+
+[connection signal="pressed" from="UpgradeAButton" to="." method="_on_upgrade_a_button_pressed"]
+[connection signal="pressed" from="UpgradeBButton" to="." method="_on_upgrade_b_button_pressed"]
+[connection signal="pressed" from="UpgradeCButton" to="." method="_on_upgrade_c_button_pressed"]

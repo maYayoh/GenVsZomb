@@ -23,6 +23,6 @@ func on_day():
 	
 	world.zombie_analyzed_count[0] += zombies_contained.filter(func(x) : return x == BaseZombie.ZombieType.SMALL_ZOMBIE).size()
 	world.zombie_analyzed_count[1] += zombies_contained.filter(func(x) : return x == BaseZombie.ZombieType.TALL_ZOMBIE).size()
-	world.zombie_analyzed_count[2] = zombies_contained.filter(func(x) : return x == BaseZombie.ZombieType.BIG_ZOMBIE).size()
+	world.zombie_analyzed_count[2] += zombies_contained.filter(func(x) : return x == BaseZombie.ZombieType.BIG_ZOMBIE).size()
 	
 	print((get_node("/root/World") as World).zombie_analyzed_count)

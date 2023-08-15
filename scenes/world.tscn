@@ -1,19 +1,19 @@
 [gd_scene load_steps=22 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
-[ext_resource type="Texture2D" uid="uid://cdyo2wn3pibk8" path="res://assets/textures/back.png" id="1_uiogn"]
+[ext_resource type="Texture2D" uid="uid://c57h3vmagm63c" path="res://assets/textures/back.png" id="1_uiogn"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
 [ext_resource type="Script" path="res://scripts/menus/NightButton.gd" id="2_ps36f"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
-[ext_resource type="Texture2D" uid="uid://duu8hocs0bd1r" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
-[ext_resource type="Texture2D" uid="uid://dibi88ghnhq76" path="res://assets/textures/number.png" id="6_nlii3"]
+[ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
+[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="6_nlii3"]
 [ext_resource type="Script" path="res://scripts/menus/Menu.gd" id="6_pfbch"]
-[ext_resource type="Texture2D" uid="uid://bqpa3iyyb8g4g" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
+[ext_resource type="Texture2D" uid="uid://c1q5e72qsuou7" path="res://assets/textures/tiles/tour.png" id="7_i1tky"]
 [ext_resource type="Script" path="res://scripts/menus/RessourcesMenu.gd" id="7_mhpmy"]
 [ext_resource type="Script" path="res://scripts/menus/BuildButton.gd" id="8_0qbiw"]
-[ext_resource type="Texture2D" uid="uid://dc5nrndfhsnnf" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
+[ext_resource type="Texture2D" uid="uid://cam7prhtnsc7s" path="res://assets/textures/tiles/lab.png" id="8_ctgqp"]
 [ext_resource type="Script" path="res://scripts/zombies/ZombieManager.gd" id="11_n5efm"]
-[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="12_l8c7u"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="12_l8c7u"]
 [ext_resource type="Script" path="res://scripts/EndZone.gd" id="16_43hgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eykte"]
@@ -199,6 +199,7 @@ unique_name_in_owner = true
 position = Vector2(7, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
+frame = 3
 
 [node name="Energy" type="Sprite2D" parent="RessourcesMenu/EnergyHolder"]
 position = Vector2(11, 3.5)
@@ -374,24 +375,24 @@ texture_normal = ExtResource("8_ctgqp")
 script = ExtResource("8_0qbiw")
 type = 2
 
-[node name="LaboratoryButtton" type="ColorRect" parent="BuildMenu"]
+[node name="LaboratoryPrice" type="ColorRect" parent="BuildMenu"]
 layout_mode = 0
 offset_top = 50.0
 offset_right = 12.0
 offset_bottom = 57.0
 
-[node name="Dizain" type="Sprite2D" parent="BuildMenu/LaboratoryButtton"]
+[node name="Dizain" type="Sprite2D" parent="BuildMenu/LaboratoryPrice"]
 position = Vector2(2, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 
-[node name="Unit" type="Sprite2D" parent="BuildMenu/LaboratoryButtton"]
+[node name="Unit" type="Sprite2D" parent="BuildMenu/LaboratoryPrice"]
 position = Vector2(6, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13
 frame = 2
 
-[node name="Coin" type="Sprite2D" parent="BuildMenu/LaboratoryButtton"]
+[node name="Coin" type="Sprite2D" parent="BuildMenu/LaboratoryPrice"]
 position = Vector2(10, 3.5)
 texture = ExtResource("6_nlii3")
 hframes = 13

@@ -34,10 +34,10 @@ func spawn_wave(x : int, lanes : MinMaxValue = MinMaxValue.new()):
 	var g_x : float = cos(x*exp(0.01*x))-sin(x*exp(0.01*x)) * 2.1*x*exp(0.01)
 	var h_x : float = sin(x*exp(0.01*x))-cos(x*exp(0.01*x)) * 2.1*x*exp(0.01)
 	
-	print("***********")
-	print(f_x)
-	print(g_x)
-	print(h_x)
+#	print("***********")
+#	print(f_x)
+#	print(g_x)
+#	print(h_x)
 	
 	var number_of_zombs : int = roundi(f_x)
 	
@@ -49,11 +49,11 @@ func spawn_wave(x : int, lanes : MinMaxValue = MinMaxValue.new()):
 		(number_of_talls if number_of_talls > 0 else 0)
 	)
 	
-	print("==========")
-	print("SMOL\t"+str(number_of_smols))
-	print("TALL\t"+str(number_of_talls))
-	print("BIG\t\t"+str(number_of_bigs))
-	print("TOTAL\t"+str(number_of_zombs))
+#	print("==========")
+#	print("SMOL\t"+str(number_of_smols))
+#	print("TALL\t"+str(number_of_talls))
+#	print("BIG\t\t"+str(number_of_bigs))
+#	print("TOTAL\t"+str(number_of_zombs))
 	
 	for i in range(number_of_smols):
 		spawn_zombie(LittleZombie, randi_range(lanes.minVal, lanes.maxVal), 5)

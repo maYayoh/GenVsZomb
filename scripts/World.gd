@@ -2,7 +2,7 @@ extends Node2D
 class_name World
 
 var money : int = 10
-var energy : int = 0
+var energy : int = 3
 var day_number : int = 1
 var is_night : bool = false
 var safe_to_go : bool = true
@@ -58,7 +58,7 @@ func menu_hidden(menu : Menu):
 			shown_menu = null
 			toggle_cursor(false)
 		
-		if (menu is LookMenu):
+		if menu is LookMenu || menu is UpgradeMenu:
 			menu.queue_free()
 	else:
 		push_error("Currently saved menu and just hidden menu were different!")
@@ -118,6 +118,7 @@ func _on_night_button_pressed():
 		on_night()
 	else:
 		$RessourcesMenu.shake($RessourcesMenu/EnergyHolder)
+
 
 func _on_lab_button_pressed():
 	#$Buttons.slide_out()

@@ -52,6 +52,7 @@ frame = 1
 position = Vector2(12, 3.5)
 texture = ExtResource("4_5kgfn")
 hframes = 13
+frame = 2
 
 [node name="Stat" type="Sprite2D" parent="."]
 position = Vector2(42, 57)
@@ -76,12 +77,12 @@ frame = 11
 position = Vector2(5, 0)
 texture = ExtResource("4_5kgfn")
 hframes = 13
-frame = 1
 
 [node name="UnitM" type="Sprite2D" parent="Money"]
 position = Vector2(9, 0)
 texture = ExtResource("4_5kgfn")
 hframes = 13
+frame = 6
 
 [node name="Elec" type="Sprite2D" parent="."]
 position = Vector2(4, 60.5)
@@ -98,5 +99,6 @@ hframes = 13
 position = Vector2(8, 0)
 texture = ExtResource("4_5kgfn")
 hframes = 13
+frame = 3
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

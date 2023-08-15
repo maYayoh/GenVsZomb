@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy7s0ybyjyh6l"]
+[gd_scene load_steps=5 format=3 uid="uid://bret7svjoj3la"]
 
-[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_xp7id"]
-[ext_resource type="PackedScene" uid="uid://rbnpvjwsi1aa" path="res://scenes/tiles/details/generatorB_details.tscn" id="2_kijhh"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="3_q7sc3"]
+[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_0vji8"]
+[ext_resource type="PackedScene" uid="uid://bq01r83i6sib" path="res://scenes/tiles/details/tower_details.tscn" id="2_f24en"]
+[ext_resource type="PackedScene" uid="uid://bo6y3e42ge31b" path="res://scenes/menus/upgrades/tour_upgrade_menu.tscn" id="3_ixquk"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="4_wbb2r"]
 
-[node name="GenBClickMenu" type="Control"]
+[node name="TourUpgradeMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -12.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xp7id")
-details_scene = ExtResource("2_kijhh")
+script = ExtResource("1_0vji8")
+details_scene = ExtResource("2_f24en")
+upgrade_menu = ExtResource("3_ixquk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -29,7 +31,7 @@ ignore_texture_size = true
 
 [node name="Info" type="Sprite2D" parent="InfoButton"]
 position = Vector2(6, 6)
-texture = ExtResource("3_q7sc3")
+texture = ExtResource("4_wbb2r")
 hframes = 5
 vframes = 2
 frame = 1
@@ -42,7 +44,7 @@ offset_bottom = 50.0
 
 [node name="Upgrade" type="Sprite2D" parent="UpgradeButton"]
 position = Vector2(6, 6)
-texture = ExtResource("3_q7sc3")
+texture = ExtResource("4_wbb2r")
 hframes = 5
 vframes = 2
 frame = 2
@@ -55,7 +57,7 @@ offset_bottom = 63.0
 
 [node name="Destroy" type="Sprite2D" parent="DestroyButton"]
 position = Vector2(6, 6)
-texture = ExtResource("3_q7sc3")
+texture = ExtResource("4_wbb2r")
 hframes = 5
 vframes = 2
 frame = 3

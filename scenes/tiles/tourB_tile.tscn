@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci3mqfnhx74y4"]
+[gd_scene load_steps=5 format=3 uid="uid://ci3mqfnhx74y4"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TowerTile.gd" id="1_rix8j"]
 [ext_resource type="Texture2D" uid="uid://de7svsqgjqn2a" path="res://assets/textures/tiles/tourB.png" id="2_28bg4"]
+[ext_resource type="PackedScene" uid="uid://d0ppxxaghfdbq" path="res://scenes/projectiles/bullet.tscn" id="2_ed881"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)
@@ -11,10 +12,13 @@ collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_rix8j")
+munition = ExtResource("2_ed881")
+power = 2
+time_between_attacks = 2.0
 type = 6
-health = 15
-money_cost = 5
-energy_cost = 2
+health = 30
+money_cost = 4
+energy_cost = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_klfxf")
@@ -24,7 +28,6 @@ texture_filter = 1
 texture = ExtResource("2_28bg4")
 region_rect = Rect2(9, 9, 12, 12)
 
-[node name="Timer" type="Timer" parent="Sprite2D"]
-unique_name_in_owner = true
+[node name="Timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Sprite2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

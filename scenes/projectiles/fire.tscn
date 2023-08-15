@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2sdf8vqjhi0w"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_yp06e"]
+[ext_resource type="Texture2D" uid="uid://7ogwhk8i44oo" path="res://assets/textures/fire.png" id="2_escyg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36lxa"]
+size = Vector2(3, 38)
+
+[sub_resource type="Animation" id="Animation_67n5v"]
+resource_name = "Expand"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2ear"]
+_data = {
+"Expand": SubResource("Animation_67n5v")
+}
+
+[node name="Fire" type="Area2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_yp06e")
+speed = 10
+hit_point = -1
+time_to_live = 2.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_36lxa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.5, 0)
+texture = ExtResource("2_escyg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Expand"
+libraries = {
+"": SubResource("AnimationLibrary_v2ear")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

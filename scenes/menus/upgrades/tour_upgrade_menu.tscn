@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo6y3e42ge31b"]
+
+[ext_resource type="Script" path="res://scripts/menus/UpgradeMenu.gd" id="1_vkppx"]
+[ext_resource type="PackedScene" uid="uid://dlvgfuhgma5dj" path="res://scenes/tiles/tourA_tile.tscn" id="2_chekh"]
+[ext_resource type="PackedScene" uid="uid://ci3mqfnhx74y4" path="res://scenes/tiles/tourB_tile.tscn" id="3_bc34n"]
+[ext_resource type="PackedScene" uid="uid://dwnd5j7a5xyn0" path="res://scenes/tiles/tourC_tile.tscn" id="4_l2xvo"]
+[ext_resource type="Texture2D" uid="uid://8pb7he12gk56" path="res://assets/textures/tiles/tourA.png" id="5_lrhi2"]
+[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="6_0p3sg"]
+[ext_resource type="Texture2D" uid="uid://de7svsqgjqn2a" path="res://assets/textures/tiles/tourB.png" id="7_v57ci"]
+[ext_resource type="Texture2D" uid="uid://cyrg8gx6diude" path="res://assets/textures/tiles/tourC.png" id="8_2bqum"]
+
+[node name="TourUpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkppx")
+upgradeA = ExtResource("2_chekh")
+upgradeB = ExtResource("3_bc34n")
+upgradeC = ExtResource("4_l2xvo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 12.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="UpgradeAButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_top = 7.0
+offset_right = 12.0
+offset_bottom = 19.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_lrhi2")
+
+[node name="UAPrice" type="ColorRect" parent="."]
+layout_mode = 2
+offset_top = 19.0
+offset_right = 12.0
+offset_bottom = 26.0
+
+[node name="Dizain" type="Sprite2D" parent="UAPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="UAPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 6
+
+[node name="Coin" type="Sprite2D" parent="UAPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 11
+
+[node name="UpgradeBButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_top = 26.0
+offset_right = 12.0
+offset_bottom = 38.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_v57ci")
+
+[node name="UBPrice" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 38.0
+offset_right = 12.0
+offset_bottom = 45.0
+
+[node name="Dizain" type="Sprite2D" parent="UBPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+
+[node name="Unit" type="Sprite2D" parent="UBPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 4
+
+[node name="Coin" type="Sprite2D" parent="UBPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 11
+
+[node name="UpgradeCButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_top = 45.0
+offset_right = 12.0
+offset_bottom = 57.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_2bqum")
+
+[node name="UCPrice" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 57.0
+offset_right = 12.0
+offset_bottom = 64.0
+
+[node name="Dizain" type="Sprite2D" parent="UCPrice"]
+position = Vector2(2, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 1
+
+[node name="Unit" type="Sprite2D" parent="UCPrice"]
+position = Vector2(6, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 5
+
+[node name="Coin" type="Sprite2D" parent="UCPrice"]
+position = Vector2(10, 3.5)
+texture = ExtResource("6_0p3sg")
+hframes = 13
+frame = 11
+
+[connection signal="pressed" from="UpgradeAButton" to="." method="_on_upgrade_a_button_pressed"]
+[connection signal="pressed" from="UpgradeBButton" to="." method="_on_upgrade_b_button_pressed"]
+[connection signal="pressed" from="UpgradeCButton" to="." method="_on_upgrade_c_button_pressed"]

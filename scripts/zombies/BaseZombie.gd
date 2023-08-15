@@ -18,7 +18,6 @@ func _ready():
 	tree_exiting.connect(_on_tree_exiting)
 	
 func take_damage(damageAmount):
-	print(self.name + "\t" + str(health) + " hp")
 	health -= damageAmount
 	if health <= 0:
 		queue_free()

@@ -51,7 +51,7 @@ hframes = 13
 position = Vector2(12, 3.5)
 texture = ExtResource("4_0ii48")
 hframes = 13
-frame = 7
+frame = 5
 
 [node name="Stat" type="Sprite2D" parent="."]
 position = Vector2(42, 57)
@@ -64,7 +64,7 @@ frame = 8
 position = Vector2(8, 3.5)
 texture = ExtResource("4_0ii48")
 hframes = 13
-frame = 5
+frame = 6
 
 [node name="Money" type="Sprite2D" parent="."]
 position = Vector2(3, 53.5)

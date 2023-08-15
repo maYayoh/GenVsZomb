@@ -6,7 +6,7 @@ enum TileType {
 }
 
 const GeneratorTile = preload("res://scenes/tiles/gen_tile.tscn")
-const TowerTile = preload("res://scenes/tiles/tour_tile.tscn")
+const TowerTileScene = preload("res://scenes/tiles/tour_tile.tscn")
 const LaboratoryTile = preload("res://scenes/tiles/lab_tile.tscn")
 
 @export var type : TileType
@@ -20,7 +20,7 @@ func on_click():
 		TileType.GENERATOR:
 			tile_type = GeneratorTile.instantiate()
 		TileType.TOWER:
-			tile_type = TowerTile.instantiate()
+			tile_type = TowerTileScene.instantiate()
 		TileType.LABORATORY:
 			tile_type = LaboratoryTile.instantiate()
 	

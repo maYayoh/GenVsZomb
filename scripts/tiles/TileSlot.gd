@@ -4,6 +4,7 @@ class_name TileSlot
 var tile : BaseTile = null
 var locked : bool = false
 
+
 func on_day():
 	locked = false
 	if tile != null:
@@ -18,21 +19,23 @@ func on_night():
 func add_building(node : BaseTile):
 	tile = node
 	add_child(tile)
+	get_parent().update_ressources.emit(tile.money_cost, tile.energy_cost)
 
 func change_building(node : BaseTile):
+	tile.newly_placed = false
 	tile.queue_free()
 	add_building(node)
 
 
 func energy_check(Warning : PackedScene, safe : bool):
-	if tile == null: return
-	if tile.get_child_count() == 3:
-		tile.get_child(2).queue_free()
-	
-	if tile is BaseTile && tile.energy_cost > 0:
-		if not safe:
-			var warning : Sprite2D = Warning.instantiate()
-			tile.add_child(warning)
+	if tile != null && tile is TowerTile:
+		if tile.get_child_count() == 4:
+			tile.get_child(3).queue_free()
+		
+		if tile.energy_cost > 0:
+			if not safe:
+				var warning : Sprite2D = Warning.instantiate()
+				tile.add_child(warning)
 
 
 func on_click(_viewport, event, _shape_idx):
