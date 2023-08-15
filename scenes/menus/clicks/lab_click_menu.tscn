@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_ax2fo"]
 [ext_resource type="PackedScene" uid="uid://b7ud8vaqasw4d" path="res://scenes/tiles/details/laboratory_details.tscn" id="2_mp5e7"]
 [ext_resource type="PackedScene" uid="uid://bn8y7jfg3vjvs" path="res://scenes/menus/upgrades/lab_upgrade_menu.tscn" id="3_nk07y"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="4_xqx3o"]
+[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="4_xqx3o"]
 
 [node name="LabClickMenu" type="Control"]
 layout_mode = 3

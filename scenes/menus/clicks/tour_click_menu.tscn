@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_sufmg"]
 [ext_resource type="PackedScene" uid="uid://bq01r83i6sib" path="res://scenes/tiles/details/tower_details.tscn" id="2_p06sf"]
 [ext_resource type="PackedScene" uid="uid://bo6y3e42ge31b" path="res://scenes/menus/upgrades/tour_upgrade_menu.tscn" id="3_smxdg"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="4_xl656"]
+[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="4_xl656"]
 
 [node name="TourClickMenu" type="Control"]
 layout_mode = 3

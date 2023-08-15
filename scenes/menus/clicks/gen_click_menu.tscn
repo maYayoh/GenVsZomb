@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_gnwx8"]
 [ext_resource type="PackedScene" uid="uid://dsht1a0kteurc" path="res://scenes/tiles/details/generator_details.tscn" id="2_4d5q4"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="2_oaryr"]
+[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="2_oaryr"]
 [ext_resource type="PackedScene" uid="uid://bcv18c3yxmpvb" path="res://scenes/menus/upgrades/gen_upgrade_menu.tscn" id="3_78l03"]
 
 [node name="GenClickMenu" type="Control"]

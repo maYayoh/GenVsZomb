@@ -55,13 +55,18 @@ func _on_info_button_pressed():
 		details = details_scene.instantiate().init(tile.health)
 	world.add_child(details)
 	self.slide_out()
+	world.get_node("Validation").play()
 
 func _on_upgrade_button_pressed():
 	if not disabled_upgrade:
 		var menu : Menu = upgrade_menu.instantiate().init(slot);
 		world.add_child(menu)
 		world.show_menu(menu)
+		world.get_node("Validation").play()
+	else:
+		world.get_node("Cancel").play()
 
 func _on_destroy_button_pressed():
+	world.get_node("Validation").play()
 	tile.queue_free()
 	self.slide_out()

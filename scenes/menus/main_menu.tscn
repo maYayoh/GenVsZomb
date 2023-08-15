@@ -92,5 +92,8 @@ color = Color(0, 0, 0, 1)
 position = Vector2(40, 5)
 texture = ExtResource("1_y553g")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]

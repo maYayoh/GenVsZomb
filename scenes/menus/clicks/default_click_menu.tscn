@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfk2f176wcj32"]
 
 [ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_yxkxw"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="2_0r6kk"]
+[ext_resource type="Texture2D" uid="uid://b7rykjertm88x" path="res://assets/textures/icons.png" id="2_0r6kk"]
 
 [node name="DefaultClickMenu" type="Control"]
 layout_mode = 3
