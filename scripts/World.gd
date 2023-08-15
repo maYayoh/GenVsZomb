@@ -108,20 +108,25 @@ func check_building_energy():
 func _on_night_panel_pressed():
 	if !is_night:
 		if $Buttons.state == Menu.SlideState.HIDDEN:
+			$Validation.play()
 			show_menu($Buttons, false)
 		else:
+			$Cancel.play()
 			$Buttons.slide_out()
 
 func _on_night_button_pressed():
 	if safe_to_go:
+		$Validation.play()
 		$Buttons.slide_out()
 		on_night()
 	else:
+		$Cancel.play()
 		$RessourcesMenu.shake($RessourcesMenu/EnergyHolder)
 
 
 func _on_lab_button_pressed():
 	#$Buttons.slide_out()
+	$Validation.play()
 	var lab_menu = Lab_Menu.instantiate().init(zombie_analyzed_count)
 	add_child(lab_menu)
 

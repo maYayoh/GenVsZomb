@@ -26,7 +26,9 @@ func on_click():
 	
 	if get_parent().state == Menu.SlideState.SHOWN:
 		if $"../..".money >= tile_type.money_cost:
+			$"../../Validation".play()
 			$"../../TileManager".add_tile(tile_type)
 			get_parent().slide_out()
 		else:
+			$"../../Cancel".play()
 			%RessourcesMenu.shake(%RessourcesMenu/MoneyHolder)
