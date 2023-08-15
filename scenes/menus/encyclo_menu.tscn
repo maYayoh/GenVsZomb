@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://ta4qbnty6ih7"]
+
+[ext_resource type="Script" path="res://scripts/menus/EncycloMenu.gd" id="1_0cqpc"]
+[ext_resource type="Texture2D" uid="uid://ctl1pu80nqg20" path="res://assets/textures/zombies/hzomb.png" id="2_drl0d"]
+[ext_resource type="Texture2D" uid="uid://bpsfayibyktmy" path="res://assets/textures/zombies/smolzomb.png" id="3_c5bbr"]
+[ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="4_fs3tr"]
+[ext_resource type="Texture2D" uid="uid://4h1b8sn8dij2" path="res://assets/textures/zombies/tallzomb.png" id="5_h5ji0"]
+[ext_resource type="Texture2D" uid="uid://cjl1qg574ha3v" path="res://assets/textures/zombies/bigzomb.png" id="6_wh4dw"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="7_gahvj"]
+
+[node name="EncycloMenu" type="ColorRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.733333, 0.733333, 0.733333, 1)
+script = ExtResource("1_0cqpc")
+
+[node name="Analyse" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 9.0
+offset_right = 60.0
+offset_bottom = 52.0
+
+[node name="CoverCover" type="ColorRect" parent="Analyse"]
+layout_mode = 0
+offset_top = -9.0
+offset_right = 30.0
+color = Color(0.733333, 0.733333, 0.733333, 1)
+
+[node name="Human" type="Sprite2D" parent="Analyse"]
+position = Vector2(15, 21)
+scale = Vector2(8, 8)
+texture = ExtResource("2_drl0d")
+
+[node name="Cover" type="ColorRect" parent="Analyse"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 43.0
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="zombies" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="backsmol" type="ColorRect" parent="zombies"]
+offset_left = 2.0
+offset_top = 10.0
+offset_right = 18.0
+offset_bottom = 19.0
+
+[node name="smol_zombie" type="Sprite2D" parent="zombies/backsmol"]
+position = Vector2(3.5, 5)
+texture = ExtResource("3_c5bbr")
+
+[node name="dizaine" type="Sprite2D" parent="zombies/backsmol/smol_zombie"]
+position = Vector2(5.5, -0.5)
+texture = ExtResource("4_fs3tr")
+hframes = 13
+
+[node name="unite" type="Sprite2D" parent="zombies/backsmol/smol_zombie"]
+position = Vector2(9.5, -0.5)
+texture = ExtResource("4_fs3tr")
+hframes = 13
+
+[node name="backtall" type="ColorRect" parent="zombies"]
+offset_left = 2.0
+offset_top = 26.0
+offset_right = 18.0
+offset_bottom = 35.0
+
+[node name="tall_zombie" type="Sprite2D" parent="zombies/backtall"]
+position = Vector2(3.5, 4.5)
+texture = ExtResource("5_h5ji0")
+
+[node name="dizaine" type="Sprite2D" parent="zombies/backtall/tall_zombie"]
+position = Vector2(5.5, 0)
+texture = ExtResource("4_fs3tr")
+hframes = 13
+
+[node name="unite" type="Sprite2D" parent="zombies/backtall/tall_zombie"]
+position = Vector2(9.5, 0)
+texture = ExtResource("4_fs3tr")
+hframes = 13
+
+[node name="backbig" type="ColorRect" parent="zombies"]
+offset_left = 2.0
+offset_top = 43.0
+offset_right = 18.0
+offset_bottom = 52.0
+
+[node name="big_zombie" type="Sprite2D" parent="zombies/backbig"]
+position = Vector2(3.5, 4.5)
+texture = ExtResource("6_wh4dw")
+
+[node name="dizaine" type="Sprite2D" parent="zombies/backbig/big_zombie"]
+position = Vector2(5.5, 0)
+texture = ExtResource("4_fs3tr")
+hframes = 13
+
+[node name="unite" type="Sprite2D" parent="zombies/backbig/big_zombie"]
+position = Vector2(9.5, 0)
+texture = ExtResource("4_fs3tr")
+hframes = 13
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(58, 58)
+texture = ExtResource("7_gahvj")
+hframes = 5
+vframes = 2
+frame = 2
+
+[node name="TextureButton" type="TextureButton" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Sprite2D/TextureButton" to="." method="_on_texture_button_pressed"]

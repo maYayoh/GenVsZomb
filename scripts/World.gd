@@ -14,13 +14,13 @@ var zombie_analyzed_count : Array = [0,0,0] #small_zombie, tall_zombie, big_zomb
 var shown_menu : Menu = null
 var queued_menu : Menu = null
 
-const Lab_Menu = preload("res://scenes/menus/lab_menu.tscn")
+const EncycloMenu = preload("res://scenes/menus/encyclo_menu.tscn")
 const Warning = preload("res://scenes/warning.tscn")
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_focus_next") && $ZombieManager.get_child_count() > 1:
-		$ZombieManager.get_child(1).position.x = 60
+		$ZombieManager.get_child(1).death.emit()
 
 func on_day():
 	day_number += 1
@@ -109,7 +109,7 @@ func check_building_energy():
 	else:
 		safe_to_go = true
 	
-	$TileManager.energy_check(Warning, safe_to_go)
+	$TileManager.energy_check(safe_to_go)
 
 
 func _on_night_panel_pressed():
@@ -132,7 +132,6 @@ func _on_night_button_pressed():
 
 
 func _on_lab_button_pressed():
-	#$Buttons.slide_out()
+	$Buttons.slide_out()
 	$Validation.play()
-	var lab_menu = Lab_Menu.instantiate().init(zombie_analyzed_count)
-	add_child(lab_menu)
+	add_child(EncycloMenu.instantiate().init(zombie_analyzed_count))

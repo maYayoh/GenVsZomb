@@ -36,4 +36,7 @@ visible = false
 position = Vector2(4, 4)
 scale = Vector2(0.333333, 0.333333)
 
+[node name="Warning" parent="." instance=ExtResource("4_4wjqu")]
+visible = false
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

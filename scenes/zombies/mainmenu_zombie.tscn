@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://biw8jbpnfqy6v"]
+
+[ext_resource type="Script" path="res://scripts/zombies/MainMenuZombie.gd" id="1_4dyfa"]
+[ext_resource type="Texture2D" uid="uid://bpsfayibyktmy" path="res://assets/textures/zombies/smolzomb.png" id="2_ywous"]
+
+[node name="MainMenuZombie" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("2_ywous")
+offset = Vector2(0.5, -0.5)
+script = ExtResource("1_4dyfa")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

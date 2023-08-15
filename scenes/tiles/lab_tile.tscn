@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqahurkqpabbe"]
+[gd_scene load_steps=5 format=3 uid="uid://cqahurkqpabbe"]
 
 [ext_resource type="Script" path="res://scripts/tiles/LabTile.gd" id="1_spdx8"]
 [ext_resource type="Texture2D" uid="uid://cam7prhtnsc7s" path="res://assets/textures/tiles/lab.png" id="2_54q2b"]
+[ext_resource type="PackedScene" uid="uid://di63171gx8ym8" path="res://scenes/warning.tscn" id="3_mjikh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)
@@ -23,3 +24,5 @@ shape = SubResource("RectangleShape2D_klfxf")
 texture_filter = 1
 texture = ExtResource("2_54q2b")
 region_rect = Rect2(9, 9, 12, 12)
+
+[node name="Warning" parent="." instance=ExtResource("3_mjikh")]

@@ -27,16 +27,13 @@ func change_building(node : BaseTile):
 	add_building(node)
 
 
-func energy_check(Warning : PackedScene, safe : bool):
-	if tile == null: return
-	
-	if tile.get_child_count() == 5:
-		tile.get_child(4).queue_free()
+func energy_check(safe : bool):
+	if tile == null : return
 		
 	if tile.energy_cost > 0:
-		if not safe:
-			var warning : Sprite2D = Warning.instantiate()
-			tile.add_child(warning)
+		var node = tile.get_node("Warning")
+		if node != null:
+			node.visible = !safe
 
 
 func on_click(_viewport, event, _shape_idx):

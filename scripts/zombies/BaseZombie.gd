@@ -3,9 +3,8 @@ class_name BaseZombie
 
 enum ZombieType {SMALL_ZOMBIE, TALL_ZOMBIE, BIG_ZOMBIE}
 
-
 signal attack(Zombie : BaseZombie)
-signal death()
+signal death(gain_money : bool)
 
 const hit_sound : AudioStream = preload("res://assets/sounds/zombie_hit.wav")
 const death_sound : AudioStream = preload("res://assets/sounds/zombie_death.wav")
@@ -21,13 +20,13 @@ const death_sound : AudioStream = preload("res://assets/sounds/zombie_death.wav"
 
 var active : bool = false
 var primed : bool = false
+var die : bool = false
 var initial_wait : float = 0
 
 
 func _ready():
 	$Timer.wait_time = time_between_moves
 	initial_wait = randf_range(0, time_between_moves)
-	print(initial_wait)
 	audio.finished.connect(_on_audio_stream_player_finished)
 	death.connect(on_death)
 
@@ -38,11 +37,13 @@ func _process(delta):
 		active = true
 		$Timer.start()
 
-func take_damage(damageAmount):
+func take_damage(damage_amount):
 	if active:
-		health -= damageAmount
+		print(damage_amount)
+		health -= damage_amount
+		print(health)
 		if (health <= 0):
-			death.emit()
+			on_death()
 		else:
 			audio.stream = hit_sound
 			audio.play()
@@ -59,11 +60,12 @@ func _on_timer_timeout():
 		else:
 			position.x += 1
 
-func on_death():
+func on_death(gain_money : bool = true):
+	die = true
 	audio.stop()
 	audio.stream = death_sound
 	audio.play()
-	(get_parent() as ZombieManager).update_ressources.emit(-money_gained, 0)
+	if gain_money: (get_parent() as ZombieManager).update_ressources.emit(-money_gained, 0)
 
 func _on_hurt_box_area_entered(area):
 	if(area is BaseTile):
@@ -77,5 +79,5 @@ func _on_hurt_box_area_exited(area):
 
 
 func _on_audio_stream_player_finished():
-	if(audio.stream == death_sound):
+	if die:
 		queue_free()

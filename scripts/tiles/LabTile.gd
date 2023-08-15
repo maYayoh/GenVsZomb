@@ -13,8 +13,8 @@ func on_damage(zombie : BaseZombie):
 
 func contain_zombie(zombie : BaseZombie = null):
 	zombies_contained.append(zombie.type)
-	zombie.death.emit()
-	print(zombies_contained)
+	zombie.modulate.r = 1
+	zombie.death.emit(false)
 
 func on_day():
 	if(zombies_contained.is_empty()):

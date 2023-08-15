@@ -52,6 +52,6 @@ func add_tile(node : BaseTile):
 	selected_slot.add_building(node)
 
 
-func energy_check(Warning : PackedScene, safe : bool):
+func energy_check(safe : bool):
 	for slot in get_children():
-		slot.energy_check(Warning, safe)
+		slot.energy_check(safe)
