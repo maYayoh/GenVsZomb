@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg0i000gb8ojj"]
+[gd_scene load_steps=26 format=3 uid="uid://dg0i000gb8ojj"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_agt8q"]
 [ext_resource type="Texture2D" uid="uid://c57h3vmagm63c" path="res://assets/textures/back.png" id="1_uiogn"]
+[ext_resource type="AudioStream" uid="uid://ba3hjjaibyjyc" path="res://assets/sounds/they_are_coming.wav" id="2_e1r2c"]
 [ext_resource type="Script" path="res://scripts/tiles/TileManager.gd" id="2_ikol8"]
 [ext_resource type="Script" path="res://scripts/menus/NightButton.gd" id="2_ps36f"]
 [ext_resource type="PackedScene" uid="uid://cu7gsk0kbrt5l" path="res://scenes/tiles/tile_slot.tscn" id="2_rhx0n"]
+[ext_resource type="Script" path="res://scripts/MusicHandler.gd" id="3_6b2v4"]
 [ext_resource type="Texture2D" uid="uid://dminj6hatkxe7" path="res://assets/textures/tiles/gen.png" id="5_b5igt"]
 [ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="6_nlii3"]
 [ext_resource type="Script" path="res://scripts/menus/Menu.gd" id="6_pfbch"]
@@ -84,6 +86,13 @@ _data = {
 z_index = -1
 texture_repeat = 2
 script = ExtResource("1_agt8q")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e1r2c")
+volume_db = -50.0
+autoplay = true
+script = ExtResource("3_6b2v4")
+state = 3
 
 [node name="Validation" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_br6w1")

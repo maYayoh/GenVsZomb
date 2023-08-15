@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci8ca64wjoigh"]
+
+[ext_resource type="Script" path="res://scripts/menus/GameOverScreen.gd" id="1_apbk3"]
+[ext_resource type="Texture2D" uid="uid://j6oqo86lvvk2" path="res://assets/textures/menu/gameover.png" id="1_wpbv2"]
+[ext_resource type="AudioStream" uid="uid://dlfqxkgs03wqe" path="res://assets/sounds/they_arrived.wav" id="3_njntd"]
+[ext_resource type="Script" path="res://scripts/MusicHandler.gd" id="4_nwi13"]
+
+[node name="GameOverScreen" type="TextureButton"]
+z_index = 2
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_apbk3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("1_wpbv2")
+
+[node name="AudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_njntd")
+volume_db = -50.0
+autoplay = true
+script = ExtResource("4_nwi13")
+state = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="finished" from="AudioStream" to="." method="_on_audio_stream_finished"]

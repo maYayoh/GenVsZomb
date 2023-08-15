@@ -6,7 +6,8 @@ signal update_ressources(money, energy)
 enum TileType {
 	GEN, GEN_A, GEN_B, GEN_C,
 	TOUR, TOUR_A, TOUR_B, TOUR_C,
-	LAB, LAB_A, LAB_B, LAB_C
+	LAB, LAB_A, LAB_B, LAB_C,
+	NULL
 }
 
 const GenMenu = preload("res://scenes/menus/clicks/gen_click_menu.tscn")

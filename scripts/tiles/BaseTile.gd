@@ -1,7 +1,7 @@
 extends Area2D
 class_name BaseTile
 
-@export var type : TileManager.TileType
+@export var type : TileManager.TileType = TileManager.TileType.NULL
 @export var health : int = 0
 @export var money_cost : int = 0
 @export var energy_cost : int = 0

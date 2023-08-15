@@ -60,6 +60,12 @@ hframes = 5
 vframes = 2
 frame = 6
 
+[node name="MultiplierS" type="Sprite2D" parent="Stat"]
+position = Vector2(4, 3.5)
+texture = ExtResource("4_6i34s")
+hframes = 13
+frame = 2
+
 [node name="UnitS" type="Sprite2D" parent="Stat"]
 position = Vector2(8, 3.5)
 texture = ExtResource("4_6i34s")

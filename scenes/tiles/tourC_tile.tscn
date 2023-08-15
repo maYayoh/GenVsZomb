@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwnd5j7a5xyn0"]
+[gd_scene load_steps=6 format=3 uid="uid://dwnd5j7a5xyn0"]
 
 [ext_resource type="Script" path="res://scripts/tiles/TowerTile.gd" id="1_2er0w"]
 [ext_resource type="PackedScene" uid="uid://d2sdf8vqjhi0w" path="res://scenes/projectiles/fire.tscn" id="2_1ilnx"]
 [ext_resource type="Texture2D" uid="uid://cyrg8gx6diude" path="res://assets/textures/tiles/tourC.png" id="2_p5chu"]
+[ext_resource type="PackedScene" uid="uid://di63171gx8ym8" path="res://scenes/warning.tscn" id="4_4wjqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klfxf"]
 size = Vector2(12, 12)
@@ -29,5 +30,10 @@ texture = ExtResource("2_p5chu")
 region_rect = Rect2(9, 9, 12, 12)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Inactive" parent="." instance=ExtResource("4_4wjqu")]
+visible = false
+position = Vector2(4, 4)
+scale = Vector2(0.333333, 0.333333)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

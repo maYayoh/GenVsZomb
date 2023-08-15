@@ -30,8 +30,8 @@ func change_building(node : BaseTile):
 func energy_check(Warning : PackedScene, safe : bool):
 	if tile == null: return
 	
-	if tile.get_child_count() == 4:
-		tile.get_child(3).queue_free()
+	if tile.get_child_count() == 5:
+		tile.get_child(4).queue_free()
 		
 	if tile.energy_cost > 0:
 		if not safe:
@@ -40,10 +40,13 @@ func energy_check(Warning : PackedScene, safe : bool):
 
 
 func on_click(_viewport, event, _shape_idx):
-	if (event is InputEventMouseButton && event.pressed && not locked):
-		$Click.play()
-		get_owner().cursor_pos = self.position
-		if (tile == null):
-			get_parent().select_slot(self)
-		else:
-			get_parent().look_menu(self, tile.type)
+	if (event is InputEventMouseButton && event.pressed):
+		if not locked:
+			$Click.play()
+			get_owner().cursor_pos = self.position
+			if (tile == null):
+				get_parent().select_slot(self)
+			else:
+				get_parent().look_menu(self, tile.type)
+		elif tile != null && tile is TowerTile:
+			tile.on_click()

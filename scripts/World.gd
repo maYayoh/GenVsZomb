@@ -1,6 +1,7 @@
 extends Node2D
 class_name World
 
+
 var money : int = 10
 var energy : int = 0
 var day_number : int = 1
@@ -17,6 +18,10 @@ const Lab_Menu = preload("res://scenes/menus/lab_menu.tscn")
 const Warning = preload("res://scenes/warning.tscn")
 
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_focus_next") && $ZombieManager.get_child_count() > 1:
+		$ZombieManager.get_child(1).position.x = 60
+
 func on_day():
 	day_number += 1
 	if day_number == 3:
@@ -27,12 +32,14 @@ func on_day():
 		$LinesBlocker/Line5.queue_free()
 	is_night = false
 	check_building_energy()
+	$Music.fade_out()
 	$DayNightCycle.play("NewDay")
 	$TileManager.on_day()
 	$RessourcesMenu.on_day()
 
 func on_night():
 	is_night = true
+	$Music.fade_in()
 	$DayNightCycle.play("NewNight")
 	$TileManager.on_night()
 	$ZombieManager.on_night(day_number-1)
@@ -129,8 +136,3 @@ func _on_lab_button_pressed():
 	$Validation.play()
 	var lab_menu = Lab_Menu.instantiate().init(zombie_analyzed_count)
 	add_child(lab_menu)
-
-
-func _process(_delta):
-	if Input.is_action_just_pressed("ui_focus_next") && $ZombieManager.get_child_count() > 1:
-		$ZombieManager.get_child(1).queue_free()

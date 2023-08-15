@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjei118xlhs8p"]
+[gd_scene load_steps=5 format=3 uid="uid://tc3wbjllce00"]
 
-[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_7bk45"]
-[ext_resource type="PackedScene" uid="uid://b7ud8vaqasw4d" path="res://scenes/tiles/details/laboratory_details.tscn" id="2_qu7ua"]
-[ext_resource type="PackedScene" uid="uid://bn8y7jfg3vjvs" path="res://scenes/menus/upgrades/lab_upgrade_menu.tscn" id="3_8ariw"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="4_ym4bt"]
+[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_gnwx8"]
+[ext_resource type="PackedScene" uid="uid://dsht1a0kteurc" path="res://scenes/tiles/details/generator_details.tscn" id="2_4d5q4"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="2_oaryr"]
+[ext_resource type="PackedScene" uid="uid://bcv18c3yxmpvb" path="res://scenes/menus/upgrades/gen_upgrade_menu.tscn" id="3_78l03"]
 
-[node name="GenUpgradeMenu" type="Control"]
+[node name="GenClickMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -12.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7bk45")
-details_scene = ExtResource("2_qu7ua")
-upgrade_menu = ExtResource("3_8ariw")
+script = ExtResource("1_gnwx8")
+details_scene = ExtResource("2_4d5q4")
+upgrade_menu = ExtResource("3_78l03")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -31,7 +31,7 @@ ignore_texture_size = true
 
 [node name="Info" type="Sprite2D" parent="InfoButton"]
 position = Vector2(6, 6)
-texture = ExtResource("4_ym4bt")
+texture = ExtResource("2_oaryr")
 hframes = 5
 vframes = 2
 frame = 1
@@ -44,7 +44,7 @@ offset_bottom = 50.0
 
 [node name="Upgrade" type="Sprite2D" parent="UpgradeButton"]
 position = Vector2(6, 6)
-texture = ExtResource("4_ym4bt")
+texture = ExtResource("2_oaryr")
 hframes = 5
 vframes = 2
 frame = 2
@@ -57,7 +57,7 @@ offset_bottom = 63.0
 
 [node name="Destroy" type="Sprite2D" parent="DestroyButton"]
 position = Vector2(6, 6)
-texture = ExtResource("4_ym4bt")
+texture = ExtResource("2_oaryr")
 hframes = 5
 vframes = 2
 frame = 3

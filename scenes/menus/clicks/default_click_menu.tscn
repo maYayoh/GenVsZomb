@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxqe0dy780shp"]
+[gd_scene load_steps=3 format=3 uid="uid://dfk2f176wcj32"]
 
-[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_skc7a"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="4_eiync"]
+[ext_resource type="Script" path="res://scripts/menus/LookMenu.gd" id="1_yxkxw"]
+[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="2_0r6kk"]
 
-[node name="DefaultUpgradeMenu" type="Control"]
+[node name="DefaultClickMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -12.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_skc7a")
+script = ExtResource("1_yxkxw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -27,7 +27,7 @@ ignore_texture_size = true
 
 [node name="Info" type="Sprite2D" parent="InfoButton"]
 position = Vector2(6, 6)
-texture = ExtResource("4_eiync")
+texture = ExtResource("2_0r6kk")
 hframes = 5
 vframes = 2
 frame = 1
@@ -40,7 +40,7 @@ offset_bottom = 50.0
 
 [node name="Upgrade" type="Sprite2D" parent="UpgradeButton"]
 position = Vector2(6, 6)
-texture = ExtResource("4_eiync")
+texture = ExtResource("2_0r6kk")
 hframes = 5
 vframes = 2
 frame = 2
@@ -53,7 +53,7 @@ offset_bottom = 63.0
 
 [node name="Destroy" type="Sprite2D" parent="DestroyButton"]
 position = Vector2(6, 6)
-texture = ExtResource("4_eiync")
+texture = ExtResource("2_0r6kk")
 hframes = 5
 vframes = 2
 frame = 3

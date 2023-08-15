@@ -13,9 +13,12 @@ const Type = TileManager.TileType
 
 func init(slot : TileSlot) -> LookMenu:
 	self.slot = slot
-	self.tile = slot.get_child(4)
+	self.tile = slot.get_child(5)
 	if (details_scene == null):
 		match(self.tile.type):
+			Type.NULL:
+				push_error(self.slot.name + " don't have a TileType.")
+			
 			Type.GEN_A:
 				details_scene = load("res://scenes/tiles/details/generatorA_details.tscn")
 			Type.GEN_B:

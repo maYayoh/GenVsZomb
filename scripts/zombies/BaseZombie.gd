@@ -13,38 +13,51 @@ const death_sound : AudioStream = preload("res://assets/sounds/zombie_death.wav"
 @export var type : ZombieType
 @export var health : int = 10
 @export var power : int = 1
-@export var time_between_moves : float = 1
+@export var time_between_moves : float = 1.0
 @export var money_gained : int = 1
 @export var attack_sound : AudioStream
 
 @onready var audio : AudioStreamPlayer = $AudioStreamPlayer
 
+var active : bool = false
 var primed : bool = false
+var initial_wait : float = 0
 
 
 func _ready():
 	$Timer.wait_time = time_between_moves
+	initial_wait = randf_range(0, time_between_moves)
+	print(initial_wait)
 	audio.finished.connect(_on_audio_stream_player_finished)
 	death.connect(on_death)
-	
+
+func _process(delta):
+	if initial_wait > 0:
+		initial_wait -= delta
+	elif not active:
+		active = true
+		$Timer.start()
+
 func take_damage(damageAmount):
-	health -= damageAmount
-	if (health <= 0):
-		death.emit()
-	else:
-		audio.stream = hit_sound
-		audio.play()
+	if active:
+		health -= damageAmount
+		if (health <= 0):
+			death.emit()
+		else:
+			audio.stream = hit_sound
+			audio.play()
 
 func _on_timer_timeout():
-	if(primed):
-		attack.emit(self)
-		audio.stream = attack_sound
-		audio.play()
-		position.y -= 1
-		await get_tree().process_frame
-		position.y += 1
-	else:
-		position.x += 1
+	if active:
+		if primed:
+			attack.emit(self)
+			audio.stream = attack_sound
+			audio.play()
+			position.y -= 1
+			await get_tree().process_frame
+			position.y += 1
+		else:
+			position.x += 1
 
 func on_death():
 	audio.stop()
