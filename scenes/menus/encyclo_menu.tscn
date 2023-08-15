@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ta4qbnty6ih7"]
+[gd_scene load_steps=11 format=3 uid="uid://ta4qbnty6ih7"]
 
 [ext_resource type="Script" path="res://scripts/menus/EncycloMenu.gd" id="1_0cqpc"]
 [ext_resource type="Texture2D" uid="uid://ctl1pu80nqg20" path="res://assets/textures/zombies/hzomb.png" id="2_drl0d"]
@@ -6,7 +6,30 @@
 [ext_resource type="Texture2D" uid="uid://cyk0ir4e5jnl7" path="res://assets/textures/number.png" id="4_fs3tr"]
 [ext_resource type="Texture2D" uid="uid://4h1b8sn8dij2" path="res://assets/textures/zombies/tallzomb.png" id="5_h5ji0"]
 [ext_resource type="Texture2D" uid="uid://cjl1qg574ha3v" path="res://assets/textures/zombies/bigzomb.png" id="6_wh4dw"]
-[ext_resource type="Texture2D" uid="uid://cgtudjnag2ydn" path="res://assets/textures/icons.png" id="7_gahvj"]
+[ext_resource type="Texture2D" uid="uid://dgljd7ty3wn7m" path="res://assets/textures/menu/Back.png" id="7_ndiih"]
+[ext_resource type="Texture2D" uid="uid://bhaetsyqhmp6d" path="res://assets/textures/menu/cure.png" id="8_i7r1y"]
+
+[sub_resource type="Animation" id="Animation_4e7v0"]
+resource_name = "blink"
+length = 3.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4, 3, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wd4c6"]
+_data = {
+"blink": SubResource("Animation_4e7v0")
+}
 
 [node name="EncycloMenu" type="ColorRect"]
 offset_right = 64.0
@@ -102,22 +125,33 @@ position = Vector2(9.5, 0)
 texture = ExtResource("4_fs3tr")
 hframes = 13
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(58, 58)
-texture = ExtResource("7_gahvj")
-hframes = 5
-vframes = 2
-frame = 2
-
-[node name="TextureButton" type="TextureButton" parent="Sprite2D"]
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = -6.0
-offset_bottom = -6.0
+offset_left = 34.0
+offset_top = 53.0
+offset_right = -7.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_ndiih")
 
-[connection signal="pressed" from="Sprite2D/TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="Cure" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 36.5
+offset_top = 2.5
+offset_right = 53.5
+offset_bottom = 7.5
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_i7r1y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cure"]
+libraries = {
+"": SubResource("AnimationLibrary_wd4c6")
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Cure" to="." method="_on_cure_pressed"]

@@ -67,6 +67,6 @@ func _on_upgrade_button_pressed():
 		world.get_node("Cancel").play()
 
 func _on_destroy_button_pressed():
-	world.get_node("Validation").play()
+	world.get_node("Cancel").play()
 	tile.queue_free()
 	self.slide_out()

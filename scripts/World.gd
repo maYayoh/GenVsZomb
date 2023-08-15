@@ -19,8 +19,9 @@ const Warning = preload("res://scenes/warning.tscn")
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_focus_next") && $ZombieManager.get_child_count() > 1:
-		$ZombieManager.get_child(1).death.emit()
+	pass
+#	if Input.is_action_just_pressed("ui_focus_next") && $ZombieManager.get_child_count() > 1:
+#		$ZombieManager.get_child(1).death.emit()
 
 func on_day():
 	day_number += 1
@@ -98,8 +99,9 @@ func toggle_cursor(show : bool):
 	$SelectedTile.visible = show
 
 func check_building_energy():
-	if $Buttons/NightButton/NightIcon.get_child_count() == 1:
-		$Buttons/NightButton/NightIcon.get_child(0).queue_free()
+	print($Buttons/NightButton/NightIcon.get_child_count() > 1)
+	for child in $Buttons/NightButton/NightIcon.get_children():
+		child.queue_free()
 	
 	if self.energy < 0:
 		safe_to_go = false

@@ -1,11 +1,13 @@
 extends TextureRect
 
 
+const tutorial = preload("res://scenes/menus/tutoriel.tscn")
 const Zomb = preload("res://scenes/zombies/mainmenu_zombie.tscn")
 const State = Menu.SlideState
 
 var state : State = State.HIDDEN
 const SPEED : int = 60
+
 
 func _process(delta):
 	match(state):
@@ -23,7 +25,6 @@ func _process(delta):
 				$Credits.position.y = ceil($Credits.position.y)
 
 
-const tutorial = preload("res://scenes/menus/tutoriel.tscn")
 
 func _on_play_pressed():
 	$Click.play()
@@ -61,3 +62,4 @@ func _on_nihilaeth_pressed():
 func _on_lab_pressed():
 	$Click.play()
 	$Interactive.add_child(Zomb.instantiate())
+	print($Interactive.get_children())

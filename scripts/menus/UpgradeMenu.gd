@@ -15,10 +15,12 @@ func button_clicked(scene : PackedScene):
 	
 	if self.state == Menu.SlideState.SHOWN:
 		if get_parent().money >= tile.money_cost:
+			get_node("/root/World/Validation").play()
 			slot.change_building(tile)
 			self.slide_out()
 		else:
 			$"../RessourcesMenu".shake($"../RessourcesMenu/MoneyHolder")
+			get_node("/root/World/Cancel").play()
 
 
 

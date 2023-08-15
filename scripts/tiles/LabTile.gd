@@ -9,7 +9,7 @@ func on_damage(zombie : BaseZombie):
 	if(zombies_contained.size() < max_zombie_contained):
 		contain_zombie(zombie)
 	else:
-		super(zombie)
+		super.on_damage(zombie)
 
 func contain_zombie(zombie : BaseZombie = null):
 	zombies_contained.append(zombie.type)
@@ -17,6 +17,7 @@ func contain_zombie(zombie : BaseZombie = null):
 	zombie.death.emit(false)
 
 func on_day():
+	super.on_day()
 	if(zombies_contained.is_empty()):
 		return
 	var world = get_node("/root/World") as World
@@ -26,3 +27,7 @@ func on_day():
 	world.zombie_analyzed_count[2] += zombies_contained.filter(func(x) : return x == BaseZombie.ZombieType.BIG_ZOMBIE).size()
 	
 	print((get_node("/root/World") as World).zombie_analyzed_count)
+
+func on_night():
+	super.on_night()
+	zombies_contained.clear()

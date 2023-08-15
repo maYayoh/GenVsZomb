@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dum40e5iefq8t"]
+
+[ext_resource type="Texture2D" uid="uid://bt8id441aotrh" path="res://assets/textures/menu/cured.png" id="1_f7fc8"]
+[ext_resource type="Script" path="res://scripts/menus/CuredScreen.gd" id="2_f60xw"]
+[ext_resource type="AudioStream" uid="uid://bker6rbn72jiw" path="res://assets/sounds/they_are_cured.wav" id="3_y4o3x"]
+[ext_resource type="Script" path="res://scripts/MusicHandler.gd" id="4_42mhv"]
+
+[node name="CuredScreen" type="TextureButton"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("1_f7fc8")
+script = ExtResource("2_f60xw")
+
+[node name="AudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_y4o3x")
+volume_db = -50.0
+autoplay = true
+script = ExtResource("4_42mhv")
+state = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

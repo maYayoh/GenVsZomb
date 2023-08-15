@@ -71,6 +71,7 @@ offset_bottom = 13.0
 color = Color(0, 0, 0, 1)
 
 [node name="Lab" type="TextureButton" parent="Interactive"]
+z_index = 2
 layout_mode = 0
 offset_left = 34.0
 offset_right = 46.0
@@ -96,6 +97,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Credits" type="TextureRect" parent="."]
+z_index = 4
 layout_mode = 0
 offset_top = 64.0
 offset_right = 64.0
